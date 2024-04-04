@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-viux17r+n+8bj#mq96ivfe(#fwq3$ez1x^yr!dk(pm*04%9o38
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.20.5',]
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'delivery',
+    'review',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +122,10 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = []
 
+LOGIN_URL = '/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
