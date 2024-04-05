@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block home_page %}
@@ -13,7 +14,7 @@
                                     <div class="row row-cols-1">
                                         <div class="col">
                                             <div class="slider__content">
-                                                <p class="slider__content--desc desc1 mb-15"><img class="slider__text--shape__icon" src="assets/img/icon/text-shape-icon.png" alt="text-shape-icon"> New Collection</p>
+                                                <p class="slider__content--desc desc1 mb-15"><img class="slider__text--shape__icon" src="{% static 'home/img/icon/text-shape-icon.png' %}" alt="text-shape-icon"> Новая коллекция</p>
                                                 <h2 class="slider__content--maintitle h1">Красивая модная <br>
                                                     Коллекция 2024</h2>
                                                 <p class="slider__content--desc desc2 d-sm-2-none mb-40">Скидки до 40% на товары финальной распродажи. <br>
@@ -37,7 +38,8 @@
                                     <div class="col">
                                         <div class="hero__slider--items__inner">
                                             <div class="slider__content">
-                                                <p class="slider__content--desc desc1 mb-15"><img class="slider__text--shape__icon" src="assets/img/icon/text-shape-icon.png" alt="text-shape-icon"> New Collection</p>
+                                                <div class="opacity-div"></div>
+                                                <p class="slider__content--desc desc1 mb-15"><img class="slider__text--shape__icon" src="{% static 'home/img/icon/text-shape-icon.png' %}" alt="text-shape-icon"> Новая коллекция</p>
                                                 <h2 class="slider__content--maintitle h1">Красивая модная <br>
                                                     Коллекция 2024</h2>
                                                 <p class="slider__content--desc desc2 d-sm-2-none mb-40 ">Скидки до 40% на товары финальной распродажи.<br>
@@ -61,7 +63,7 @@
                                     <div class="col-lg-6 offset-lg-6">
                                         <div class="hero__slider--items__inner">
                                             <div class="slider__content text-center">
-                                                <p class="slider__content--desc desc1 mb-15"><img class="slider__text--shape__icon" src="assets/img/icon/text-shape-icon.png" alt="text-shape-icon"> New Collection</p>
+                                                <p class="slider__content--desc desc1 mb-15"><img class="slider__text--shape__icon" src="{% static 'home/img/icon/text-shape-icon.png' %}" alt="text-shape-icon"> Новая коллекция</p>
                                                 <h2 class="slider__content--maintitle h1">Красивая модная <br>
                                                     Коллекция 2024</h2>
                                                 <p class="slider__content--desc desc2 d-sm-2-none mb-40">Скидки до 40% на товары финальной распродажи. <br>
@@ -92,12 +94,12 @@
                 <div class="row mb--n28">
                     <div class="col-lg-5 col-md-order mb-28">
                         <div class="banner__items">
-                            <a class="banner__items--thumbnail position__relative" href="shop.html"><img class="banner__items--thumbnail__img" src="assets/img/banner/banner1.png" alt="banner-img">
+                            <a class="banner__items--thumbnail position__relative" href="shop.html"><img class="banner__items--thumbnail__img" src="{% static 'home/img/banner/banner1.png' %}" alt="banner-img">
                                 <div class="banner__items--content">
-                                    <span class="banner__items--content__subtitle">17% Discount</span>
-                                    <h2 class="banner__items--content__title h3">Spring Collection <br>
+                                    <span class="banner__items--content__subtitle">Скидка 17%</span>
+                                    <h2 class="banner__items--content__title h3">Весенняя коллекция <br>
                                         Style To</h2>
-                                    <span class="banner__items--content__link">View Discounts
+                                    <span class="banner__items--content__link">Посмотреть скидки
                                         <svg class="banner__items--content__arrow--icon" xmlns="http://www.w3.org/2000/svg" width="20.2" height="12.2" viewBox="0 0 6.2 6.2">
                                             <path d="M7.1,4l-.546.546L8.716,6.713H4v.775H8.716L6.554,9.654,7.1,10.2,9.233,8.067,10.2,7.1Z" transform="translate(-4 -4)" fill="currentColor"></path>
                                         </svg>
@@ -110,12 +112,12 @@
                         <div class="row row-cols-lg-2 row-cols-sm-2 row-cols-1">
                             <div class="col mb-28">
                                 <div class="banner__items">
-                                    <a class="banner__items--thumbnail position__relative" href="shop.html"><img class="banner__items--thumbnail__img" src="assets/img/banner/banner2.png" alt="banner-img">
+                                    <a class="banner__items--thumbnail position__relative" href="shop.html"><img class="banner__items--thumbnail__img" src="{% static 'home/img/banner/banner2.png' %}" alt="banner-img">
                                         <div class="banner__items--content">
-                                            <span class="banner__items--content__subtitle text__secondary">Shop Women</span>
-                                            <h2 class="banner__items--content__title h3">Up to 70% Off & <br>
-                                                Free Shipping</h2>
-                                            <span class="banner__items--content__link">View Discounts
+                                            <span class="banner__items--content__subtitle text__secondary">Магазин для женщин</span>
+                                            <h2 class="banner__items--content__title h3">Скидка до 70% & <br>
+                                                Бесплатная доставка</h2>
+                                            <span class="banner__items--content__link">Посмотреть скидки
                                                 <svg class="banner__items--content__arrow--icon" xmlns="http://www.w3.org/2000/svg" width="20.2" height="12.2" viewBox="0 0 6.2 6.2">
                                                     <path d="M7.1,4l-.546.546L8.716,6.713H4v.775H8.716L6.554,9.654,7.1,10.2,9.233,8.067,10.2,7.1Z" transform="translate(-4 -4)" fill="currentColor"></path>
                                                 </svg>
@@ -126,12 +128,12 @@
                             </div>
                             <div class="col mb-28">
                                 <div class="banner__items">
-                                    <a class="banner__items--thumbnail position__relative" href="shop.html"><img class="banner__items--thumbnail__img" src="assets/img/banner/banner3.png" alt="banner-img">
+                                    <a class="banner__items--thumbnail position__relative" href="shop.html"><img class="banner__items--thumbnail__img" src="{% static 'home/img/banner/banner3.png' %}" alt="banner-img">
                                         <div class="banner__items--content">
-                                            <span class="banner__items--content__subtitle">Shop Women</span>
-                                            <h2 class="banner__items--content__title h3">Free Shipping Over <br>
-                                                Order $120</h2>
-                                            <span class="banner__items--content__link">View Discounts
+                                            <span class="banner__items--content__subtitle">Магазин для женщин</span>
+                                            <h2 class="banner__items--content__title h3">Бесплатная доставка <br>
+                                                Заказать $120</h2>
+                                            <span class="banner__items--content__link">Посмотреть скидки
                                                 <svg class="banner__items--content__arrow--icon" xmlns="http://www.w3.org/2000/svg" width="20.2" height="12.2" viewBox="0 0 6.2 6.2">
                                                     <path d="M7.1,4l-.546.546L8.716,6.713H4v.775H8.716L6.554,9.654,7.1,10.2,9.233,8.067,10.2,7.1Z" transform="translate(-4 -4)" fill="currentColor"></path>
                                                 </svg>
@@ -142,12 +144,12 @@
                             </div>
                         </div>
                         <div class="banner__items">
-                            <a class="banner__items--thumbnail position__relative" href="shop.html"><img class="banner__items--thumbnail__img banner__img--max__height" src="assets/img/banner/banner4.png" alt="banner-img">
+                            <a class="banner__items--thumbnail position__relative" href="shop.html"><img class="banner__items--thumbnail__img banner__img--max__height" src="{% static 'home/img/banner/banner4.png' %}" alt="banner-img">
                                 <div class="banner__items--content">
                                     <span class="banner__items--content__subtitle">25% Discount</span>
                                     <h2 class="banner__items--content__title h3">Leather Saddle <br>
                                         Bag Style</h2>
-                                    <span class="banner__items--content__link">View Discounts
+                                    <span class="banner__items--content__link">Посмотреть скидки
                                         <svg class="banner__items--content__arrow--icon" xmlns="http://www.w3.org/2000/svg" width="20.2" height="12.2" viewBox="0 0 6.2 6.2">
                                             <path d="M7.1,4l-.546.546L8.716,6.713H4v.775H8.716L6.554,9.654,7.1,10.2,9.233,8.067,10.2,7.1Z" transform="translate(-4 -4)" fill="currentColor"></path>
                                         </svg>
@@ -180,15 +182,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product1.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product2.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product1.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product2.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h3 class="product__items--content__title h4"><a href="product-details.html">Oversize Cotton Dress</a></h3>
                                             <div class="product__items--price">
                                                 <span class="current__price">$110</span>
@@ -245,7 +247,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -269,15 +271,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product3.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product4.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product3.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product3.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h3 class="product__items--content__title h4"><a href="product-details.html">Boxy Denim Jacket</a></h3>
                                             <div class="product__items--price">
                                                 <span class="current__price">$120</span>
@@ -334,7 +336,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -358,15 +360,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product5.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product11.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product5.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product11.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Quilted Shoulder Bag</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$115</span>
@@ -423,7 +425,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -447,15 +449,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product6.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product7.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product6.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product7.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">High Ankle Jeans</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$125</span>
@@ -512,7 +514,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -536,15 +538,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product8.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product15.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Square Shoulder Bag</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$117</span>
@@ -601,7 +603,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -625,15 +627,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product9.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product10.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product9.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product10.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Light Denim Jacket</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$130</span>
@@ -690,7 +692,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -714,15 +716,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product12.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product13.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product12.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product13.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Wool-blend Jacket</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$144</span>
@@ -779,7 +781,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -803,15 +805,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product11.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product8.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product11.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Aware organic cotton</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$135</span>
@@ -868,7 +870,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -892,15 +894,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product14.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product15.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product14.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Western denim shirt</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$128</span>
@@ -957,7 +959,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -981,15 +983,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product2.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product1.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product2.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product1.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">OSmock Mini Dresss</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$142</span>
@@ -1046,7 +1048,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1076,15 +1078,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product8.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product15.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Square Shoulder Bag</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$117</span>
@@ -1141,7 +1143,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1165,15 +1167,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product9.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product10.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product9.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product10.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Light Denim Jacket</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$130</span>
@@ -1230,7 +1232,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1254,15 +1256,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product12.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product13.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product12.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product13.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Wool-blend Jacket</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$144</span>
@@ -1319,7 +1321,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1343,15 +1345,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product11.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product8.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product11.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Aware organic cotton</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$135</span>
@@ -1408,7 +1410,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1432,15 +1434,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product14.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product15.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product14.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Western denim shirt</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$128</span>
@@ -1497,7 +1499,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1521,15 +1523,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product2.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product1.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product2.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product1.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">OSmock Mini Dresss</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$142</span>
@@ -1586,7 +1588,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1610,15 +1612,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product1.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product2.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product1.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product2.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h3 class="product__items--content__title h4"><a href="product-details.html">Oversize Cotton Dress</a></h3>
                                             <div class="product__items--price">
                                                 <span class="current__price">$110</span>
@@ -1675,7 +1677,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1699,15 +1701,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product3.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product4.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product3.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product4.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h3 class="product__items--content__title h4"><a href="product-details.html">Boxy Denim Jacket</a></h3>
                                             <div class="product__items--price">
                                                 <span class="current__price">$120</span>
@@ -1764,7 +1766,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1788,15 +1790,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product5.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product11.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product5.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product11.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Quilted Shoulder Bag</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$115</span>
@@ -1853,7 +1855,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1877,15 +1879,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product6.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product7.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product6.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product7.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">High Ankle Jeans</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$125</span>
@@ -1942,7 +1944,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -1972,15 +1974,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product6.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product7.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product6.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product7.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">High Ankle Jeans</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$125</span>
@@ -2037,7 +2039,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -2061,15 +2063,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product8.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product15.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Square Shoulder Bag</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$117</span>
@@ -2126,7 +2128,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -2150,15 +2152,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product9.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product10.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product9.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product10.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Light Denim Jacket</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$130</span>
@@ -2215,7 +2217,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -2239,15 +2241,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product12.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product13.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product12.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product13.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Wool-blend Jacket</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$144</span>
@@ -2304,7 +2306,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -2328,15 +2330,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product1.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product2.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product1.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product2.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h3 class="product__items--content__title h4"><a href="product-details.html">Oversize Cotton Dress</a></h3>
                                             <div class="product__items--price">
                                                 <span class="current__price">$110</span>
@@ -2393,7 +2395,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -2417,15 +2419,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product3.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product4.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product3.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product4.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h3 class="product__items--content__title h4"><a href="product-details.html">Boxy Denim Jacket</a></h3>
                                             <div class="product__items--price">
                                                 <span class="current__price">$120</span>
@@ -2482,7 +2484,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -2506,15 +2508,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product5.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product11.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product5.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product11.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Quilted Shoulder Bag</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$115</span>
@@ -2571,7 +2573,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -2595,15 +2597,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product11.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product8.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product11.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Aware organic cotton</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$135</span>
@@ -2660,7 +2662,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -2684,15 +2686,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product14.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product15.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product14.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Western denim shirt</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$128</span>
@@ -2749,7 +2751,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -2773,15 +2775,15 @@
                                     <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product2.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product1.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product2.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product1.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">OSmock Mini Dresss</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$142</span>
@@ -2838,7 +2840,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -2928,15 +2930,15 @@
                             <div class="product__items ">
                                 <div class="product__items--thumbnail">
                                     <a class="product__items--link" href="product-details.html">
-                                        <img class="product__items--img product__primary--img" src="assets/img/product/product1.png" alt="product-img">
-                                        <img class="product__items--img product__secondary--img" src="assets/img/product/product2.png" alt="product-img">
+                                        <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product1.png' %}" alt="product-img">
+                                        <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product2.png' %}" alt="product-img">
                                     </a>
                                     <div class="product__badge">
-                                        <span class="product__badge--items sale">Sale</span>
+                                        <span class="product__badge--items sale">Распродажа</span>
                                     </div>
                                 </div>
                                 <div class="product__items--content">
-                                    <span class="product__items--content__subtitle">Jacket, Women</span>
+                                    <span class="product__items--content__subtitle">Куртка, Женская</span>
                                     <h3 class="product__items--content__title h4"><a href="product-details.html">Oversize Cotton Dress</a></h3>
                                     <div class="product__items--price">
                                         <span class="current__price">$110</span>
@@ -2992,7 +2994,7 @@
                                                       </g>
                                                     </g>
                                                 </svg>
-                                                <span class="add__to--cart__text"> + Add to cart</span>
+                                                <span class="add__to--cart__text"> + В корзину</span>
                                             </a>
                                         </li>
                                         <li class="product__items--action__list">
@@ -3016,15 +3018,15 @@
                             <div class="product__items ">
                                 <div class="product__items--thumbnail">
                                     <a class="product__items--link" href="product-details.html">
-                                        <img class="product__items--img product__primary--img" src="assets/img/product/product3.png" alt="product-img">
-                                        <img class="product__items--img product__secondary--img" src="assets/img/product/product4.png" alt="product-img">
+                                        <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product3.png' %}" alt="product-img">
+                                        <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product4.png' %}" alt="product-img">
                                     </a>
                                     <div class="product__badge">
-                                        <span class="product__badge--items sale">Sale</span>
+                                        <span class="product__badge--items sale">Распродажа</span>
                                     </div>
                                 </div>
                                 <div class="product__items--content">
-                                    <span class="product__items--content__subtitle">Jacket, Women</span>
+                                    <span class="product__items--content__subtitle">Куртка, Женская</span>
                                     <h3 class="product__items--content__title h4"><a href="product-details.html">Boxy Denim Jacket</a></h3>
                                     <div class="product__items--price">
                                         <span class="current__price">$120</span>
@@ -3080,7 +3082,7 @@
                                                       </g>
                                                     </g>
                                                 </svg>
-                                                <span class="add__to--cart__text"> + Add to cart</span>
+                                                <span class="add__to--cart__text"> + В корзину</span>
                                             </a>
                                         </li>
                                         <li class="product__items--action__list">
@@ -3104,15 +3106,15 @@
                             <div class="product__items ">
                                 <div class="product__items--thumbnail">
                                     <a class="product__items--link" href="product-details.html">
-                                        <img class="product__items--img product__primary--img" src="assets/img/product/product5.png" alt="product-img">
-                                        <img class="product__items--img product__secondary--img" src="assets/img/product/product11.png" alt="product-img">
+                                        <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product5.png' %}" alt="product-img">
+                                        <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product11.png' %}" alt="product-img">
                                     </a>
                                     <div class="product__badge">
-                                        <span class="product__badge--items sale">Sale</span>
+                                        <span class="product__badge--items sale">Распродажа</span>
                                     </div>
                                 </div>
                                 <div class="product__items--content">
-                                    <span class="product__items--content__subtitle">Jacket, Women</span>
+                                    <span class="product__items--content__subtitle">Куртка, Женская</span>
                                     <h4 class="product__items--content__title"><a href="product-details.html">Quilted Shoulder Bag</a></h4>
                                     <div class="product__items--price">
                                         <span class="current__price">$115</span>
@@ -3168,7 +3170,7 @@
                                                       </g>
                                                     </g>
                                                 </svg>
-                                                <span class="add__to--cart__text"> + Add to cart</span>
+                                                <span class="add__to--cart__text"> + В корзину</span>
                                             </a>
                                         </li>
                                         <li class="product__items--action__list">
@@ -3192,15 +3194,15 @@
                             <div class="product__items ">
                                 <div class="product__items--thumbnail">
                                     <a class="product__items--link" href="product-details.html">
-                                        <img class="product__items--img product__primary--img" src="assets/img/product/product8.png" alt="product-img">
-                                        <img class="product__items--img product__secondary--img" src="assets/img/product/product15.png" alt="product-img">
+                                        <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
+                                        <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product15.png' %}" alt="product-img">
                                     </a>
                                     <div class="product__badge">
-                                        <span class="product__badge--items sale">Sale</span>
+                                        <span class="product__badge--items sale">Распродажа</span>
                                     </div>
                                 </div>
                                 <div class="product__items--content">
-                                    <span class="product__items--content__subtitle">Jacket, Women</span>
+                                    <span class="product__items--content__subtitle">Куртка, Женская</span>
                                     <h4 class="product__items--content__title"><a href="product-details.html">Square Shoulder Bag</a></h4>
                                     <div class="product__items--price">
                                         <span class="current__price">$117</span>
@@ -3256,7 +3258,7 @@
                                                       </g>
                                                     </g>
                                                 </svg>
-                                                <span class="add__to--cart__text"> + Add to cart</span>
+                                                <span class="add__to--cart__text"> + В корзину</span>
                                             </a>
                                         </li>
                                         <li class="product__items--action__list">
@@ -3280,15 +3282,15 @@
                             <div class="product__items ">
                                 <div class="product__items--thumbnail">
                                     <a class="product__items--link" href="product-details.html">
-                                        <img class="product__items--img product__primary--img" src="assets/img/product/product12.png" alt="product-img">
-                                        <img class="product__items--img product__secondary--img" src="assets/img/product/product13.png" alt="product-img">
+                                        <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product12.png' %}" alt="product-img">
+                                        <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product13.png' %}" alt="product-img">
                                     </a>
                                     <div class="product__badge">
-                                        <span class="product__badge--items sale">Sale</span>
+                                        <span class="product__badge--items sale">Распродажа</span>
                                     </div>
                                 </div>
                                 <div class="product__items--content">
-                                    <span class="product__items--content__subtitle">Jacket, Women</span>
+                                    <span class="product__items--content__subtitle">Куртка, Женская</span>
                                     <h4 class="product__items--content__title"><a href="product-details.html">Wool-blend Jacket</a></h4>
                                     <div class="product__items--price">
                                         <span class="current__price">$144</span>
@@ -3344,7 +3346,7 @@
                                                         </g>
                                                     </g>
                                                 </svg>
-                                                <span class="add__to--cart__text"> + Add to cart</span>
+                                                <span class="add__to--cart__text"> + В корзину</span>
                                             </a>
                                         </li>
                                         <li class="product__items--action__list">
@@ -3368,15 +3370,15 @@
                             <div class="product__items ">
                                         <div class="product__items--thumbnail">
                                             <a class="product__items--link" href="product-details.html">
-                                                <img class="product__items--img product__primary--img" src="assets/img/product/product14.png" alt="product-img">
-                                                <img class="product__items--img product__secondary--img" src="assets/img/product/product15.png" alt="product-img">
+                                                <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product14.png' %}" alt="product-img">
+                                                <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                             </a>
                                             <div class="product__badge">
-                                                <span class="product__badge--items sale">Sale</span>
+                                                <span class="product__badge--items sale">Распродажа</span>
                                             </div>
                                         </div>
                                         <div class="product__items--content">
-                                            <span class="product__items--content__subtitle">Jacket, Women</span>
+                                            <span class="product__items--content__subtitle">Куртка, Женская</span>
                                             <h4 class="product__items--content__title"><a href="product-details.html">Western denim shirt</a></h4>
                                             <div class="product__items--price">
                                                 <span class="current__price">$128</span>
@@ -3433,7 +3435,7 @@
                                                               </g>
                                                             </g>
                                                         </svg>
-                                                        <span class="add__to--cart__text"> + Add to cart</span>
+                                                        <span class="add__to--cart__text"> + В корзину</span>
                                                     </a>
                                                 </li>
                                                 <li class="product__items--action__list">
@@ -3457,15 +3459,15 @@
                             <div class="product__items ">
                                 <div class="product__items--thumbnail">
                                     <a class="product__items--link" href="product-details.html">
-                                        <img class="product__items--img product__primary--img" src="assets/img/product/product11.png" alt="product-img">
-                                        <img class="product__items--img product__secondary--img" src="assets/img/product/product8.png" alt="product-img">
+                                        <img class="product__items--img product__primary--img" src="{% static 'home/img/product/product11.png' %}" alt="product-img">
+                                        <img class="product__items--img product__secondary--img" src="{% static 'home/img/product/product8.png' %}" alt="product-img">
                                     </a>
                                     <div class="product__badge">
-                                        <span class="product__badge--items sale">Sale</span>
+                                        <span class="product__badge--items sale">Распродажа</span>
                                     </div>
                                 </div>
                                 <div class="product__items--content">
-                                    <span class="product__items--content__subtitle">Jacket, Women</span>
+                                    <span class="product__items--content__subtitle">Куртка, Женская</span>
                                     <h4 class="product__items--content__title"><a href="product-details.html">Aware organic cotton</a></h4>
                                     <div class="product__items--price">
                                         <span class="current__price">$135</span>
@@ -3521,7 +3523,7 @@
                                                       </g>
                                                     </g>
                                                 </svg>
-                                                <span class="add__to--cart__text"> + Add to cart</span>
+                                                <span class="add__to--cart__text"> + В корзину</span>
                                             </a>
                                         </li>
                                         <li class="product__items--action__list">
@@ -3555,18 +3557,18 @@
                 <div class="row row-cols-md-2 row-cols-1 mb--n28">
                     <div class="col mb-28">
                         <div class="banner__items position__relative">
-                            <a class="banner__items--thumbnail " href="shop.html"><img class="banner__items--thumbnail__img banner__img--max__height" src="assets/img/banner/banner5.png" alt="banner-img">
+                            <a class="banner__items--thumbnail " href="shop.html"><img class="banner__items--thumbnail__img banner__img--max__height" src="{% static 'home/img/banner/banner5.png' %}" alt="banner-img">
                                 <div class="banner__items--content">
-                                    <span class="banner__items--content__subtitle d-none d-lg-block">Pick Your Items</span>
+                                    <span class="banner__items--content__subtitle d-none d-lg-block">Выберите свои предметы</span>
                                     <h2 class="banner__items--content__title h3">Up to 25% Off Order Now</h2>
-                                    <span class="banner__items--content__link"><u>Shop now</u></span>
+                                    <span class="banner__items--content__link"><u>Купить сейчас</u></span>
                                 </div>
                             </a>
                         </div>
                     </div>
                     <div class="col mb-28">
                         <div class="banner__items position__relative">
-                            <a class="banner__items--thumbnail " href="shop.html"><img class="banner__items--thumbnail__img banner__img--max__height" src="assets/img/banner/banner6.png" alt="banner-img">
+                            <a class="banner__items--thumbnail " href="shop.html"><img class="banner__items--thumbnail__img banner__img--max__height" src="{% static 'home/img/banner/banner6.png' %}" alt="banner-img">
                                 <div class="banner__items--content">
                                     <span class="banner__items--content__subtitle d-none d-lg-block">Special offer</span>
                                     <h2 class="banner__items--content__title h3">Up to 35% Off Order Now</h2>
@@ -3591,12 +3593,12 @@
                         <div class="swiper-slide">
                             <div class="testimonial__items text-center">
                                 <div class="testimonial__items--thumbnail">
-                                    <img class="testimonial__items--thumbnail__img border-radius-50" src="assets/img/other/testimonial-thumb1.png" alt="testimonial-img">
+                                    <img class="testimonial__items--thumbnail__img border-radius-50" src="{% static 'home/img/other/testimonial-thumb1.png' %}" alt="testimonial-img">
                                 </div>
                                 <div class="testimonial__items--content">
                                     <h3 class="testimonial__items--title">Nike Mardson</h3>
                                     <span class="testimonial__items--subtitle">fashion</span>
-                                    <p class="testimonial__items--desc">Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+                                    <p class="testimonial__items--desc">Сама боль очень важна, за ней последует адиписцин, но при этом бывает, что работы много и боли. Как минимум</p>
                                     <ul class="rating testimonial__rating d-flex justify-content-center">
                                         <li class="rating__list">
                                             <span class="rating__list--icon">
@@ -3641,12 +3643,12 @@
                         <div class="swiper-slide">
                             <div class="testimonial__items text-center">
                                 <div class="testimonial__items--thumbnail">
-                                    <img class="testimonial__items--thumbnail__img border-radius-50" src="assets/img/other/testimonial-thumb2.png" alt="testimonial-img">
+                                    <img class="testimonial__items--thumbnail__img border-radius-50" src="{% static 'home/img/other/testimonial-thumb2.png' %}" alt="testimonial-img">
                                 </div>
                                 <div class="testimonial__items--content">
                                     <h3 class="testimonial__items--title">Laura Johnson</h3>
                                     <span class="testimonial__items--subtitle">fashion</span>
-                                    <p class="testimonial__items--desc">Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+                                    <p class="testimonial__items--desc">Сама боль очень важна, за ней последует адиписцин, но при этом бывает, что работы много и боли. Как минимум</p>
                                     <ul class="rating testimonial__rating d-flex justify-content-center">
                                         <li class="rating__list">
                                             <span class="rating__list--icon">
@@ -3691,12 +3693,12 @@
                         <div class="swiper-slide">
                             <div class="testimonial__items text-center">
                                 <div class="testimonial__items--thumbnail">
-                                    <img class="testimonial__items--thumbnail__img border-radius-50" src="assets/img/other/testimonial-thumb3.png" alt="testimonial-img">
+                                    <img class="testimonial__items--thumbnail__img border-radius-50" src="{% static 'home/img/other/testimonial-thumb3.png' %}" alt="testimonial-img">
                                 </div>
                                 <div class="testimonial__items--content">
                                     <h3 class="testimonial__items--title">Richard Smith</h3>
                                     <span class="testimonial__items--subtitle">fashion</span>
-                                    <p class="testimonial__items--desc">Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+                                    <p class="testimonial__items--desc">Сама боль очень важна, за ней последует адиписцин, но при этом бывает, что работы много и боли. Как минимум</p>
                                     <ul class="rating testimonial__rating d-flex justify-content-center">
                                         <li class="rating__list">
                                             <span class="rating__list--icon">
@@ -3741,12 +3743,12 @@
                         <div class="swiper-slide">
                             <div class="testimonial__items text-center">
                                 <div class="testimonial__items--thumbnail">
-                                    <img class="testimonial__items--thumbnail__img border-radius-50" src="assets/img/other/testimonial-thumb1.png" alt="testimonial-img">
+                                    <img class="testimonial__items--thumbnail__img border-radius-50" src="{% static 'home/img/other/testimonial-thumb1.png' %}" alt="testimonial-img">
                                 </div>
                                 <div class="testimonial__items--content">
                                     <h3 class="testimonial__items--title">Nike Mardson</h3>
                                     <span class="testimonial__items--subtitle">fashion</span>
-                                    <p class="testimonial__items--desc">Lorem ipsum dolor sit amet, consectetur adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+                                    <p class="testimonial__items--desc">Сама боль очень важна, за ней последует адиписцин, но при этом бывает, что работы много и боли. Как минимум</p>
                                     <ul class="rating testimonial__rating d-flex justify-content-center">
                                         <li class="rating__list">
                                             <span class="rating__list--icon">
@@ -3801,11 +3803,11 @@
                 <div class="row row-cols-1">
                     <div class="col">
                         <div class="banner__section--inner position__relative">
-                            <a class="banner__items--thumbnail display-block" href="shop.html"><img class="banner__items--thumbnail__img banner__img--height__md display-block" src="assets/img/banner/banner-bg2.png" alt="banner-img">
+                            <a class="banner__items--thumbnail display-block" href="shop.html"><img class="banner__items--thumbnail__img banner__img--height__md display-block" src="{% static 'home/img/banner/banner-bg2.png' %}" alt="banner-img">
                                 <div class="banner__content--style2">
-                                    <h2 class="banner__content--style2__title text-white">Need Winter Boots? </h2>
-                                    <p class="banner__content--style2__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam, quis nostrud exercitation </p>
-                                    <span class="primary__btn">Shop Now
+                                    <h2 class="banner__content--style2__title text-white">Нужны зимние ботинки?</h2>
+                                    <p class="banner__content--style2__desc">Боль сама по себе очень важна, прибавка в весе последует, но это происходит в такой момент, что с большими усилиями и болью я приду к минимуму, какое у нас упражнение</p>
+                                    <span class="primary__btn">Купить сейчас
                                         <svg class="primary__btn--arrow__icon" xmlns="http://www.w3.org/2000/svg" width="20.2" height="12.2" viewBox="0 0 6.2 6.2">
                                         <path d="M7.1,4l-.546.546L8.716,6.713H4v.775H8.716L6.554,9.654,7.1,10.2,9.233,8.067,10.2,7.1Z" transform="translate(-4 -4)" fill="currentColor"></path>
                                         </svg>

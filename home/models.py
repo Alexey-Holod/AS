@@ -29,11 +29,11 @@ def user_directory_path(instance, filename):
 
 class PhotoProduct(models.Model):
     Product_link = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='Товар', related_name='images')
-    car_photo = models.ImageField(upload_to=user_directory_path, verbose_name='Фото')
+    product_photo = models.ImageField(upload_to=user_directory_path, verbose_name='Фото')
 
     def __str__(self):
         #car_link = int(self.car_link)
-        return self.car_link
+        return str(self.product_photo)
 
     class Meta:
         verbose_name = 'Фото товара'
