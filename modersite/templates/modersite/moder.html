@@ -1,0 +1,42 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+    {% block style %}
+<link type="text/css" href="{% static 'modersite/css/moderstyle.css' %}" rel="stylesheet"/>
+    {% endblock %}
+
+{% block home_page %}
+<form class="input-data" action="{% url 'moder' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="add_product-container">
+        <div class="add_product-col1">
+            <label class="#" for="{{ FormAddProduct.Posted_by.id_for_label }}">{{ FormAddProduct.Posted_by.label }}</label>
+                  {{ FormAddProduct.Posted_by }} </br>
+
+            <label class="#" for="{{ FormAddProduct.Name_product.id_for_label }}">{{ FormAddProduct.Name_product.label }}</label>
+                  {{ FormAddProduct.Name_product }} </br>
+
+            <label class="#" for="{{ FormAddProduct.Product_brand.id_for_label }}">{{ FormAddProduct.Product_brand.label }}</label>
+                  {{ FormAddProduct.Product_brand }} </br>
+
+            <label class="#" for="{{ FormAddProduct.Product_type.id_for_label }}">{{ FormAddProduct.Product_type.label }}</label>
+                  {{ FormAddProduct.Product_type }} </br>
+        </div>
+        <div class="add_product-col2">
+            <label class="#" for="{{ FormAddProduct.Product_gender.id_for_label }}">{{ FormAddProduct.Product_gender.label }}</label>
+                  {{ FormAddProduct.Product_gender }} </br>
+
+            <label class="#" for="{{ FormAddProduct.Product_age_category.id_for_label }}">{{ FormAddProduct.Product_age_category.label }}</label>
+                  {{ FormAddProduct.Product_age_category }} </br>
+
+            <label class="#" for="{{ FormAddProduct.Product_size.id_for_label }}">{{ FormAddProduct.Product_size.label }}</label>
+                  {{ FormAddProduct.Product_size }} </br>
+
+            <label class="#" for="{{ FormAddProduct.Product_price.id_for_label }}">{{ FormAddProduct.Product_price.label }}</label>
+                  {{ FormAddProduct.Product_price }} </br>
+        </div>
+    </div>
+    <button class="primary__btn" type="submit">Далее</button>
+</form>
+
+{% endblock %}

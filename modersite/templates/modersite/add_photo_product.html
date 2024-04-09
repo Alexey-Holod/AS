@@ -1,0 +1,13 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+    {% block home_page %}
+        <form enctype="multipart/form-data" action="{% url 'LoadPhoto' ProductID %}" href='#' method="POST">
+            <h1>{{ ProductID }}</h1>
+            {% csrf_token %}
+            {{ FormAddPhotoProduct }}
+            <p class="link-read-lot">
+                <button class="link-read-lot" type="submit">Добавить</button>
+            </p>
+        </form>
+    {% endblock %}
