@@ -7,9 +7,9 @@
 
 {% block home_page %}
 <form class="input-data" action="{% url 'moder' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+    {{ FormAddProduct.errors }}
     <div class="add_product-container">
-        <div class="add_product-col1">
+        <div class="add_product-col1 back-color">
             <label class="#" for="{{ FormAddProduct.Posted_by.id_for_label }}">{{ FormAddProduct.Posted_by.label }}</label>
                   {{ FormAddProduct.Posted_by }} </br>
 
@@ -22,7 +22,7 @@
             <label class="#" for="{{ FormAddProduct.Product_type.id_for_label }}">{{ FormAddProduct.Product_type.label }}</label>
                   {{ FormAddProduct.Product_type }} </br>
         </div>
-        <div class="add_product-col2">
+        <div class="add_product-col2 back-color">
             <label class="#" for="{{ FormAddProduct.Product_gender.id_for_label }}">{{ FormAddProduct.Product_gender.label }}</label>
                   {{ FormAddProduct.Product_gender }} </br>
 
@@ -35,8 +35,15 @@
             <label class="#" for="{{ FormAddProduct.Product_price.id_for_label }}">{{ FormAddProduct.Product_price.label }}</label>
                   {{ FormAddProduct.Product_price }} </br>
         </div>
+        <div>
+            <h1>Что-то</h1>
+        </div>
+        <div>
+            <h1>Тут тоже</h1>
+        </div>
     </div>
     <button class="primary__btn" type="submit">Далее</button>
+    {% csrf_token %}
 </form>
 
 {% endblock %}

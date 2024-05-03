@@ -1,6 +1,10 @@
 {% extends 'home/base.html' %}
 {% load static %}
 
+    {% block style %}
+<link type="text/css" href="{% static 'modersite/css/moderstyle.css' %}" rel="stylesheet"/>
+    {% endblock %}
+
     {% block home_page %}
         <form enctype="multipart/form-data" action="{% url 'LoadPhoto' ProductID %}" href='#' method="POST">
             <h1>{{ ProductID }}</h1>
@@ -10,4 +14,13 @@
                 <button class="link-read-lot" type="submit">Добавить</button>
             </p>
         </form>
+        <div class="container" align="center">
+            {% for ph in PhotoOneProduct %}
+            <div class="elena">
+                <img class=".img-size d-block" src="{{ph.product_photo.url}}">
+                            <p class="link-read-lot"><a href="#}">Удалить</a></p>
+            </div>
+            {% endfor %}
+        </div>
+
     {% endblock %}
