@@ -8,7 +8,13 @@ def home(request):
     ProdAndPhoto = {}
     for item_prod in Prod:
         ProdAndPhoto[item_prod] = item_prod.images.all()[:4]
-
-    print('****', ProdAndPhoto)
     context = {'ProdAndPhoto': ProdAndPhoto, }
     return render(request, 'home/home.html', context)
+
+def product_details(request, produkt_id):
+    ProdDetails = Product.objects.get(id = produkt_id)
+    ProdPhoto = ProdDetails.images.all()
+    ProdSize = []
+    ProdSize.append(ProdDetails.Product_size)
+    context = {'ProdDetails': ProdDetails, 'ProdPhoto': ProdPhoto, 'ProdSize': ProdSize};
+    return render(request, 'home/product-details.html', context)
