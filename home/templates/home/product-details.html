@@ -143,11 +143,12 @@
                             <form action="#">
                                 <h2 class="product__details--info__title mb-15">{{ ProdDetails.Name_product }}</h2>
                                 <div class="product__details--info__price mb-10">
-                                    <span class="current__price">$110</span>
-                                    <span class="price__divided"></span>
-                                    <span class="old__price">$178</span>
+                                    <span class="current__price">{{ ProdDetails.Product_price }}</span>
+                                    <!-- <span class="price__divided"></span>
+                                    <span class="old__price">$178</span> -->
                                 </div>
                                 <div class="product__details--info__meta">
+                                    <p class="product__details--info__meta--list"><strong>ID:</strong>  <span>{{ ProdDetails.id }}</span> </p>
                                     <p class="product__details--info__meta--list"><strong>Артикул:</strong>  <span>{{ ProdDetails.Product_code }}</span> </p>
                                     <p class="product__details--info__meta--list"><strong>Бренд:</strong>  <span>{{ ProdDetails.Product_brand }}</span> </p>
                                     <p class="product__details--info__meta--list"><strong>Тип:</strong>  <span>{{ ProdDetails.Product_type }}</span> </p>
@@ -157,13 +158,13 @@
                                     <div class="product__variant--list mb-15">
                                         <fieldset class="variant__input--fieldset weight">
                                             <legend class="product__variant--title mb-8">Размеры :</legend>
-                                            {% for sizes in ProdSize%}
+                                            {% for sizes in ProdSize %}
                                                 {% if forloop.first %}
                                                     <input id="weight{{ sizes.id }}" name="weight" type="radio" checked>
                                                     <label class="variant__size--value red" for="weight{{ sizes.id }}">{{ sizes }}</label>
                                                 {% else %}
                                                     <input id="weight{{ sizes.id }}" name="weight" type="radio">
-                                                    <label class="variant__size--value red" for="weight{{ sizes.id }}">3 kg</label>
+                                                    <label class="variant__size--value red" for="weight{{ sizes.id }}">{{ sizes }}</label>
                                                 {% endif%}
                                             {% endfor %}
                                         </fieldset>

@@ -9,7 +9,9 @@
         <form enctype="multipart/form-data" action="{% url 'LoadPhoto' ProductID %}" href='#' method="POST">
             <h1>{{ ProductID }}</h1>
             {% csrf_token %}
-            {{ FormAddPhotoProduct }}
+            {% for fild in FormAddPhotoProduct %}
+            {{ fild }} <br>
+            {% endfor %}
             <p class="link-read-lot">
                 <button class="link-read-lot" type="submit">Добавить</button>
             </p>

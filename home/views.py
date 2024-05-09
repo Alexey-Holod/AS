@@ -14,7 +14,8 @@ def home(request):
 def product_details(request, produkt_id):
     ProdDetails = Product.objects.get(id = produkt_id)
     ProdPhoto = ProdDetails.images.all()
-    ProdSize = []
-    ProdSize.append(ProdDetails.Product_size)
+    ProdSize = ProdDetails.Product_size.all()
+    print('**********', ProdDetails)
+    print('**********', ProdSize)
     context = {'ProdDetails': ProdDetails, 'ProdPhoto': ProdPhoto, 'ProdSize': ProdSize};
     return render(request, 'home/product-details.html', context)
