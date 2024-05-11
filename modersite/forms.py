@@ -1,8 +1,8 @@
 from django import forms
 from home.models import *
 
-HUITA0 = (('1', 'Huita1'), ('1', 'Huita1'), ('1', 'Huita1')),
-#Форма для добавления автомобиля
+
+#Форма для добавления товара
 class AddProduct(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
@@ -29,6 +29,46 @@ class AddProduct(forms.ModelForm):
             'Product_gender': forms.Select(attrs={'class': 'datalot'}),
             'Product_age_category': forms.Select(attrs={'class': 'datalot'}),
             'Product_price': forms.TextInput(attrs={'class': 'datalot', 'type': 'number', 'maxlength': '9'}),
+        }
+
+
+#Форма для добавления бренда
+class AddBrand(forms.ModelForm):
+    class Meta:
+        model = Brand
+        fields = ['brand_name', ]
+        widgets = {
+            'brand_name': forms.TextInput(attrs={'class': 'datalot'}),
+        }
+
+
+#Форма для добавления бренда
+class AddProductType(forms.ModelForm):
+    class Meta:
+        model = ProductType
+        fields = ['Type', ]
+        widgets = {
+            'Age_range': forms.TextInput(attrs={'class': 'datalot'}),
+        }
+
+
+#Форма для добавления возростной категории
+class AddAgeCategory(forms.ModelForm):
+    class Meta:
+        model = AgeCategory
+        fields = ['Age_range', ]
+        widgets = {
+            'Age_range': forms.TextInput(attrs={'class': 'datalot'}),
+        }
+
+
+#Форма для добавления
+class AddSize(forms.ModelForm):
+    class Meta:
+        model = Size
+        fields = ['size_range', ]
+        widgets = {
+            'size_range': forms.TextInput(attrs={'class': 'datalot'}),
         }
 
 

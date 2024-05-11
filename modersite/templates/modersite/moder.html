@@ -6,43 +6,85 @@
     {% endblock %}
 
 {% block home_page %}
-<form class="input-data" action="{% url 'moder' %}" method="POST" enctype="multipart/form-data">
-    <div class="add_product-container">
-        <div class="add_product-col1 back-color">
-            <label class="#" for="{{ FormAddProduct.Posted_by.id_for_label }}">{{ FormAddProduct.Posted_by.label }}</label>
-                  {{ FormAddProduct.Posted_by }} </br>
+<div class="container-forms">
+    <div class="add_product_params">
+        <form id="op" class="po" action="{% url 'moder' %}" method="POST" enctype="multipart/form-data">
+            <div class="add_product-container">
+                <div class="add_product-col1 back-color">
+                    <label class="#" for="{{ FormAddProduct.Posted_by.id_for_label }}">{{ FormAddProduct.Posted_by.label }}</label>
+                          {{ FormAddProduct.Posted_by }} </br>
 
-            <label class="#" for="{{ FormAddProduct.Name_product.id_for_label }}">{{ FormAddProduct.Name_product.label }}</label>
-                  {{ FormAddProduct.Name_product }} </br>
+                    <label class="#" for="{{ FormAddProduct.Name_product.id_for_label }}">{{ FormAddProduct.Name_product.label }}</label>
+                          {{ FormAddProduct.Name_product }} </br>
 
-            <label class="#" for="{{ FormAddProduct.Product_brand.id_for_label }}">{{ FormAddProduct.Product_brand.label }}</label>
-                  {{ FormAddProduct.Product_brand }} </br>
+                    <label class="#" for="{{ FormAddProduct.Product_brand.id_for_label }}">{{ FormAddProduct.Product_brand.label }}</label>
+                          {{ FormAddProduct.Product_brand }} </br>
 
-            <label class="#" for="{{ FormAddProduct.Product_type.id_for_label }}">{{ FormAddProduct.Product_type.label }}</label>
-                  {{ FormAddProduct.Product_type }} </br>
-        </div>
-        <div class="add_product-col2 back-color">
-            <label class="#" for="{{ FormAddProduct.Product_gender.id_for_label }}">{{ FormAddProduct.Product_gender.label }}</label>
-                  {{ FormAddProduct.Product_gender }} </br>
+                    <label class="#" for="{{ FormAddProduct.Product_type.id_for_label }}">{{ FormAddProduct.Product_type.label }}</label>
+                          {{ FormAddProduct.Product_type }} </br>
+                </div>
+                <div class="add_product-col2 back-color">
+                    <label class="#" for="{{ FormAddProduct.Product_gender.id_for_label }}">{{ FormAddProduct.Product_gender.label }}</label>
+                          {{ FormAddProduct.Product_gender }} </br>
 
-            <label class="#" for="{{ FormAddProduct.Product_age_category.id_for_label }}">{{ FormAddProduct.Product_age_category.label }}</label>
-                  {{ FormAddProduct.Product_age_category }} </br>
+                    <label class="#" for="{{ FormAddProduct.Product_age_category.id_for_label }}">{{ FormAddProduct.Product_age_category.label }}</label>
+                          {{ FormAddProduct.Product_age_category }} </br>
 
-            <label class="#" for="{{ FormAddProduct.Product_price.id_for_label }}">Размеры:</label>
-                  {{ FormAddProduct.Product_size }} </br>
+                    <label class="#" for="{{ FormAddProduct.Product_price.id_for_label }}">Размеры:</label>
+                          {{ FormAddProduct.Product_size }} </br>
 
-            <label class="#" for="{{ FormAddProduct.Product_price.id_for_label }}">{{ FormAddProduct.Product_price.label }}</label>
-                  {{ FormAddProduct.Product_price }} </br></br> {{ FormAddProduct.errors }}
-            <button class="primary__btn" type="submit">Далее</button>
-        </div>
-        <div>
-            <h1>Что-то</h1>
-        </div>
-        <div>
-            <h1>Тут тоже</h1>
-        </div>
+                    <label class="#" for="{{ FormAddProduct.Product_price.id_for_label }}">{{ FormAddProduct.Product_price.label }}</label>
+                          {{ FormAddProduct.Product_price }} </br></br> {{ FormAddProduct.errors }}
+                    <button class="primary__btn" type="submit">Далее</button>
+                </div>
+            </div>
+            {% csrf_token %}
+        </form>
     </div>
-    {% csrf_token %}
-</form>
+    <div class="add_product_params back-color">
+        <form class="input-data" action="{% url 'brand' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        {{ FormAddBrand }} </br>
+            <button class="primary__btn" type="submit">Добавить</button>
+            <br><br>
+            {% for b in Brands %}
+            <a class="fa-solid fa-trash" href="{% url 'delete' 'Brands' b.id %}"></a>  {{ b.brand_name }}<br>
+            {% endfor %}
+        </form>
+    </div>
+    <div class="add_product_params back-color">
+        <form class="input-data" action="{% url 'type_product' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        {{ FormAddProductType }} </br>
+            <button class="primary__btn" type="submit">Добавить</button>
+            <br><br>
+            {% for pt in ProdType %}
+            <a class="fa-solid fa-trash" href="{% url 'delete' 'ProdType' pt.id %}"></a>  {{ pt.Type }}<br>
+            {% endfor %}
+        </form>
+    </div>
+    <div class="add_product_params back-color">
+        <form class="input-data" action="{% url 'age_category' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        {{ FormAddAgeCategory }} </br>
+            <button class="primary__btn" type="submit">Добавить</button>
+            <br><br>
+            {% for ag in AgeCategories %}
+            <a class="fa-solid fa-trash" href="{% url 'delete' 'AgeCategories' ag.id %}"></a>  {{ ag.Age_range }}<br>
+            {% endfor %}
+        </form>
+    </div>
+    <div class="add_product_params back-color">
+        <form class="input-data" action="{% url 'size' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+        {{ FormAddSize }} </br>
+            <button class="primary__btn" type="submit">Добавить</button>
+            <br><br>
+            {% for s in Sizes %}
+            <a class="fa-solid fa-trash" href="{% url 'delete' 'Size' s.id %}"></a>  {{ s.size_range }}<br>
+            {% endfor %}
+        </form>
+    </div>
+</div>
 
 {% endblock %}

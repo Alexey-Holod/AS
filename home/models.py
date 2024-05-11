@@ -42,7 +42,7 @@ class PhotoProduct(models.Model):
 
 
 class Brand(models.Model):
-    brand_name = models.CharField(max_length=1000, verbose_name='Бренд')
+    brand_name = models.CharField(max_length=1000, verbose_name='Название Бренда')
 
     def __str__(self):
         return self.brand_name
@@ -78,10 +78,10 @@ class AgeCategory(models.Model):
 
 
 class ProductType(models.Model):
-    Age_range = models.CharField(max_length=1000, verbose_name='Тип_одежды')
+    Type = models.CharField(max_length=1000, verbose_name='Тип_одежды')
 
     def __str__(self):
-        return self.Age_range
+        return self.Type
 
     class Meta:
         verbose_name = 'Тип одежды'
