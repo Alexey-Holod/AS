@@ -1,0 +1,16 @@
+<form enctype="multipart/form-data" action="{% url 'LoadPhoto' prod_id %}" href='#' method="POST">
+    <h1>{{ prod_id }}</h1>
+    {% csrf_token %}
+    {{ FormAddPhotoProduct }} <br>
+    <p class="link-read-lot">
+        <button class="link-read-lot" type="submit">Добавить</button>
+    </p>
+</form>
+<div class="container" align="center">
+    {% for ph in PhotoOneProduct %}
+    <div class="elena">
+        <img class=".img-size d-block" src="{{ph.product_photo.url}}">
+                    <p class="link-read-lot"><a href="{% url 'delete_one_photo' prod_id ph.id|default:0 %}">Удалить</a></p>
+    </div>
+    {% endfor %}
+</div>

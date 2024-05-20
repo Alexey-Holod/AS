@@ -21,7 +21,7 @@ class AddProduct(forms.ModelForm):
         fields = ['Name_product', 'Product_brand',
                   'Product_type', 'Product_gender',
                   'Product_age_category', 'Product_size',
-                  'Product_price']
+                  'Product_price', 'Product_sale']
         widgets = {
             'Name_product': forms.TextInput(attrs={'class': 'datalot'}),
             'Product_brand': forms.Select(attrs={'class': 'datalot'}),
@@ -29,6 +29,7 @@ class AddProduct(forms.ModelForm):
             'Product_gender': forms.Select(attrs={'class': 'datalot'}),
             'Product_age_category': forms.Select(attrs={'class': 'datalot'}),
             'Product_price': forms.TextInput(attrs={'class': 'datalot', 'type': 'number', 'maxlength': '9'}),
+            'Product_sale': forms.CheckboxInput(),
         }
 
 
@@ -42,13 +43,14 @@ class AddBrand(forms.ModelForm):
         }
 
 
-#Форма для добавления бренда
+#Форма для добавления
 class AddProductType(forms.ModelForm):
     class Meta:
         model = ProductType
-        fields = ['Type', ]
+        fields = ['Type', 'TypeGender',]
         widgets = {
-            'Age_range': forms.TextInput(attrs={'class': 'datalot'}),
+            'Type': forms.TextInput(attrs={'class': 'datalot'}),
+            'TypeGender': forms.Select(attrs={'class': 'datalot'}),
         }
 
 
@@ -79,5 +81,5 @@ class AddPhotoProduct(forms.ModelForm):
         fields = ['product_photo', ]
 
         widgets = {
-            'product_photo': forms.FileInput(attrs={'class': '#', }),
+            'product_photo': forms.FileInput(),
         }

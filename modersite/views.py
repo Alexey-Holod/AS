@@ -1,24 +1,37 @@
 from django.shortcuts import render, redirect
 from .forms import *
-from django.http import HttpResponse
+from home.OtherFunction import *
 from home.models import *
 
 
 def moder(request):
+    if request.user.id == None or request.user.is_staff == False:
+        return redirect('home')
+    chekform = False
+    ShoweProduct = show_product(request)
+    ProductTypeList = ProductType.objects.all()
     if request.method == "POST":
         FormAddProduct = AddProduct(request.POST)
         if FormAddProduct.is_valid():
             ProductObj = FormAddProduct.save(commit=False)
-            Article = (str(ProductObj.Product_brand.id) + '.' + str(ProductObj.Product_type.id) + '.' +
-                           str(ProductObj.Product_type.id) + '.' + str(ProductObj.Product_gender.id))
-            ProductObj.Posted_by = request.user
-            ProductObj.Product_code = Article
-            ProductObj.save()
-            ProductObj.Product_size.set(request.POST.getlist('Product_size'))
-            FormAddPhotoProduct = AddPhotoProduct
-            return render(request, 'modersite/add_photo_product.html',
-                          {'FormAddPhotoProduct': FormAddPhotoProduct, 'title': 'Добавить фото товара',
-                           'ProductID': ProductObj.id})
+            try:
+                Article = (str(ProductObj.Product_brand.id) + '.' + str(ProductObj.Product_type.id) + '.' +
+                               str(ProductObj.Product_type.id) + '.' + str(ProductObj.Product_gender.id))
+                ProductObj.Posted_by = request.user
+                ProductObj.Product_code = Article
+                ProductObj.save()
+                #PhotoOneProduct = ProductObj.images.all()
+                ProductObj.Product_size.set(request.POST.getlist('Product_size'))
+                FormAddPhotoProduct = AddPhotoProduct
+                context = {'FormAddProduct': FormAddPhotoProduct,
+                           'title': 'Добавить фото', 'PhotoOneProduct': FormAddPhotoProduct,
+                           'prod_id': ProductObj.id}
+
+            except:
+                # Если возникла ошибка значит не все поля были заполнены
+                # Ставим флаг в значение TRUE и передаем на форму, там разберуться что с этим делать...
+                chekform = True
+            return render(request, 'modersite/edit_product.html', context=context)
         else:
             FormAddProduct.add_error(None, 'form1 Ошибка добавления лота')
     FormAddProduct = AddProduct
@@ -30,16 +43,18 @@ def moder(request):
     Brands = Brand.objects.all()
     AgeCategories = AgeCategory.objects.all()
     Sizes = Size.objects.all()
-    print('*******************', type(Brands))
     context = {'FormAddProduct': FormAddProduct,
+               'ProdAndPhoto': ShoweProduct,
                'FormAddBrand': FormAddBrand,
-               'FormAddProductType':FormAddProductType,
+               'FormAddProductType': FormAddProductType,
                'FormAddAgeCategory': FormAddAgeCategory,
                'FormAddSize': FormAddSize,
                'Brands': Brands,
                'ProdType': ProdType,
                'AgeCategories': AgeCategories,
-               'Sizes': Sizes}
+               'Sizes': Sizes,
+               'ProductTypeList': ProductTypeList,
+               'chekform': chekform}
     return render(request, 'modersite/moder.html', context=context)
 
 
@@ -103,13 +118,65 @@ def delete(request, table, id):
         ErrMess = 'Не удалось определить модель или атрибут =( '
     return redirect('moder')
 
+
+# Редактирование товара
+def edit_product(request, prod_id):
+    prod_edit = Product.objects.get(id=prod_id)
+    if request.method == 'POST':
+        form = AddProduct(request.POST, instance=prod_edit)
+        if form.is_valid():
+            #prod_edit.publication_status = moder_lot_status.objects.get(id=1)
+            prod_edit.save()
+            form.save()
+            return redirect('moder')
+    ProdDetails = Product.objects.get(id=prod_id)
+    PhotoOneProduct = ProdDetails.images.all()
+    FormAddPhotoProduct = AddPhotoProduct()
+    context = {
+        'prod_id': prod_id, 'PhotoOneProduct': PhotoOneProduct,
+        'title': 'Редактирование товара', 'FormAddPhotoProduct': FormAddPhotoProduct,
+        'prod_edit': prod_edit, 'FormAddProduct': AddProduct(instance=prod_edit)}
+    return render(request, 'modersite/edit_product.html',  context=context)
+
+
+# Удаление одного фото
+def delete_one_photo(request, prod_id, id_photo):
+    if id_photo == 'no_data':
+        del_photo = ''
+    else:
+        del_photo = PhotoProduct.objects.filter(id=id_photo, Product_link=prod_id)
+    FormAddPhotoProduct = AddPhotoProduct()
+    #del_photo = PhotoProduct.objects.filter(id=id_photo, Product_link=prod_id)
+    del_photo.delete()
+    ProductObj = Product.objects.get(id=prod_id)
+    PhotoOneProduct = ProductObj.images.all()
+    context = {
+        'prod_id': prod_id, 'PhotoOneProduct': PhotoOneProduct,
+        'title': 'Редактирование товара', 'prod_edit': ProductObj,
+        'FormAddProduct': AddProduct(instance=ProductObj),
+        'FormAddPhotoProduct': FormAddPhotoProduct}
+    return render(request, 'modersite/edit_product.html', context=context)
+
+
+# Удаление товара
+def delete_product(request, prod_id):
+    product_delete = Product.objects.filter(id=prod_id)
+    photo_product_delete = PhotoProduct.objects.filter(Product_link=prod_id)
+    if photo_product_delete:
+        for ph in photo_product_delete:
+            ph.product_photo.delete(save=True)
+        photo_product_delete.delete()
+    product_delete.delete()
+    return redirect('moder')
+
+
 def load_photo(request, ProductID):
+    ProductLink = Product.objects.get(id=ProductID)
     if request.method == "POST":
         FormAddPhotoProduct = AddPhotoProduct(request.POST, request.FILES)
         if FormAddPhotoProduct.is_valid():
             try:
                 loading = FormAddPhotoProduct.save(commit=False)
-                ProductLink = Product.objects.get(id=ProductID)
                 loading.Product_link = ProductLink
                 loading.save()
             except:
@@ -117,5 +184,7 @@ def load_photo(request, ProductID):
     else:
         FormAddPhotoProduct = AddPhotoProduct()
     PhotoOneProduct = PhotoProduct.objects.filter(Product_link=ProductID)
-    context = {'FormAddPhotoProduct': FormAddPhotoProduct, 'title': 'Добавить фото', 'PhotoOneProduct': PhotoOneProduct, 'ProductID':ProductID}
-    return render(request, 'modersite/add_photo_product.html', context=context)
+    context = {'FormAddPhotoProduct': FormAddPhotoProduct, 'title': 'Добавить фото',
+               'PhotoOneProduct': PhotoOneProduct, 'prod_id': ProductID,
+               'FormAddProduct': ProductLink}
+    return render(request, 'modersite/edit_product.html', context=context)

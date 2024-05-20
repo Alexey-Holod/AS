@@ -1,7 +1,7 @@
 {% load static %}
 
 <!doctype html>
-<html lang="zxx">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -21,7 +21,7 @@
   <link type="text/css" href="{% static 'home/css/vendor/bootstrap.min.css' %}" rel="stylesheet"/>
 
   <link type="text/css" href="{% static 'home/css/style.css' %}" rel="stylesheet"/>
-  <link type="text/css" href="{% static 'home/css/sliders.css' %}" rel="stylesheet"/>
+
 </head>
 
 <body>
@@ -93,25 +93,7 @@
                     <div class="main__logo">
                         <h1 class="main__logo--title"><a class="main__logo--link" href="{% url 'home' %}"><img class="main__logo--img" src="{% static 'home/img/logo/nav-log.png' %}" alt="logo-img"></a></h1>
                     </div>
-                    <div class="header__search--widget header__sticky--none d-none d-lg-block">
-                        <form class="d-flex header__search--form" action="#">
-                            <div class="header__select--categories select">
-                                <select class="header__select--inner">
-                                    <option selected value="1">Все категории</option>
-                                    <option value="2">Аксессуары</option>
-                                    <option value="3">Аксессуары & Другое</option>
-                                </select>
-                            </div>
-                            <div class="header__search--box">
-                                <label>
-                                    <input class="header__search--input" placeholder="Например: спорт" type="text">
-                                </label>
-                                <button class="header__search--button bg__secondary text-white" type="submit" aria-label="search button">
-                                    <svg class="header__search--button__svg" xmlns="http://www.w3.org/2000/svg" width="27.51" height="26.443" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path></svg>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+
                     <div class="header__account header__sticky--none">
                         <ul class="d-flex">
                             <li class="header__account--items">
@@ -294,37 +276,46 @@
 
                                 </li>
                                 <li class="header__menu--items">
-                                    <a class="header__menu--link" href="blog.html">Блог
+                                    <a class="header__menu--link">Мужское
                                         <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
                                             <path  d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"/>
                                         </svg>
                                     </a>
                                     <ul class="header__sub--menu">
-                                        <li class="header__sub--menu__items"><a href="blog.html" class="header__sub--menu__link">Блог сетка</a></li>
-                                        <li class="header__sub--menu__items"><a href="blog-details.html" class="header__sub--menu__link">Блог подробности</a></li>
-                                        <li class="header__sub--menu__items"><a href="blog-left-sidebar.html" class="header__sub--menu__link">Блог левое меню</a></li>
-                                        <li class="header__sub--menu__items"><a href="blog-right-sidebar.html" class="header__sub--menu__link">Блог правое меню</a></li>
+                                        {% for itm in ProductTypeList %}
+                                            {% if itm.TypeGender|striptags == 'МЖ' or itm.TypeGender|striptags == 'М' %}
+                                                <li class="header__sub--menu__items"><a href="{% url 'shop' itm.id %}" class="header__sub--menu__link">{{ itm.Type }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
                                     </ul>
                                 </li>
-                                <li class="header__menu--items d-none d-xl-block">
-                                    <a class="header__menu--link" href="shop.html">Категории</a>
-                                </li>
                                 <li class="header__menu--items">
-                                    <a class="header__menu--link" href="#">Информация
+                                    <a class="header__menu--link">Женское
                                         <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
                                             <path  d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"/>
                                         </svg>
                                     </a>
                                     <ul class="header__sub--menu">
-                                        <li class="header__sub--menu__items"><a href="contact.html" class="header__sub--menu__link">Наши сонтакты</a></li>
-                                        <li class="header__sub--menu__items"><a href="cart.html" class="header__sub--menu__link">Cart Page</a></li>
-                                        <li class="header__sub--menu__items"><a href="portfolio.html" class="header__sub--menu__link">Portfolio Page</a></li>
-                                        <li class="header__sub--menu__items"><a href="wishlist.html" class="header__sub--menu__link">Wishlist Page</a></li>
-                                        <li class="header__sub--menu__items"><a href="404.html" class="header__sub--menu__link">Error Page</a></li>
+                                        {% for itm in ProductTypeList %}
+                                            {% if itm.TypeGender|striptags == 'МЖ' or itm.TypeGender|striptags == 'Ж' %}
+                                                <li class="header__sub--menu__items"><a href="{% url 'shop' itm.id %}" class="header__sub--menu__link">{{ itm.Type }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
                                     </ul>
                                 </li>
                                 <li class="header__menu--items">
-                                    <a class="header__menu--link" href="contact.html">Контакты </a>
+                                    <a class="header__menu--link" href="#">Детям
+                                        <svg class="menu__arrowdown--icon" xmlns="http://www.w3.org/2000/svg" width="12" height="7.41" viewBox="0 0 12 7.41">
+                                            <path  d="M16.59,8.59,12,13.17,7.41,8.59,6,10l6,6,6-6Z" transform="translate(-6 -8.59)" fill="currentColor" opacity="0.7"/>
+                                        </svg>
+                                    </a>
+                                    <ul class="header__sub--menu">
+                                        <li class="header__sub--menu__items"><a href="#" class="header__sub--menu__link">Мальчики</a></li>
+                                        <li class="header__sub--menu__items"><a href="#" class="header__sub--menu__link">Девочки</a></li>
+                                    </ul>
+                                </li>
+                                <li class="header__menu--items">
+                                    <a class="header__menu--link" href="#">Контакты </a>
                                 </li>
                             </ul>
                         </nav>

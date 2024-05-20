@@ -22,7 +22,15 @@
 
                     <label class="#" for="{{ FormAddProduct.Product_type.id_for_label }}">{{ FormAddProduct.Product_type.label }}</label>
                           {{ FormAddProduct.Product_type }} </br>
+
+                    <label class="#" for="#">Распродажа: {{ FormAddProduct.Product_sale }} </label>
+                          </br>
+                {% if chekform %}
+                    <br>
+                    <h4>Заполните все поля и выпадающие списки!</h4>
+                {% endif %}
                 </div>
+
                 <div class="add_product-col2 back-color">
                     <label class="#" for="{{ FormAddProduct.Product_gender.id_for_label }}">{{ FormAddProduct.Product_gender.label }}</label>
                           {{ FormAddProduct.Product_gender }} </br>
@@ -86,5 +94,7 @@
         </form>
     </div>
 </div>
+
+{% include 'includes/product_show.html' %}
 
 {% endblock %}

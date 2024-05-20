@@ -10,5 +10,8 @@ urlpatterns = [
     path('age_category/', age_category, name='age_category'),
     path('size/', size, name='size'),
     path('delete/<str:table>/<int:id>', delete, name='delete'),
-    path('load_photo/<int:ProductID>', load_photo, name='LoadPhoto')
+    path('load_photo/<int:ProductID>', load_photo, name='LoadPhoto'),
+    path('edit_product/<int:prod_id>', edit_product, name='edit_product'),
+    path('delete_product/<int:prod_id>', delete_product, name='delete_product'),
+    path('delete_one_photo/<int:prod_id>/<int:id_photo>', delete_one_photo, name='delete_one_photo')
 ]
