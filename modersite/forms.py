@@ -83,3 +83,4 @@ class AddPhotoProduct(forms.ModelForm):
         widgets = {
             'product_photo': forms.FileInput(),
         }
+

@@ -10,9 +10,7 @@ class Product(models.Model):
     Product_gender = models.ForeignKey('Gender', on_delete=models.PROTECT, blank=True, verbose_name='Гендер', null=True)
     Product_age_category = models.ForeignKey('AgeCategory', on_delete=models.PROTECT, blank=True, verbose_name='Возростная категория')
     Product_price = models.CharField(max_length=20, verbose_name='Цена')
-
     Product_sale = models.BooleanField(verbose_name='Распродажа')
-
     Product_code = models.CharField(max_length=1000, verbose_name='Артикул')
     Product_size = models.ManyToManyField('Size', verbose_name='Размер', related_name='sizes')
     def __str__(self):
