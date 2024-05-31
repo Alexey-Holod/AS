@@ -13,9 +13,10 @@ def home(request):
     return render(request, 'home/home.html', context)
 
 
-def shop(request, product_type):
+def shop(request, product_type, gender):
     Brends = Brand.objects.all()
-    ProdAndPhoto = show_product(request, product_type)
+    IDGen = Gender.objects.get(gender_name=gender)
+    ProdAndPhoto = show_product(request, product_type, [], IDGen.id)
     ProductTypeList = ProductType.objects.all()
     price_form = PriceFormSearch
     context = {'Brends': Brends, 'ProductTypeList': ProductTypeList,
