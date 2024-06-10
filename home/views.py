@@ -21,11 +21,12 @@ def shop(request, product_type, gender):
     price_form = PriceFormSearch
     context = {'Brends': Brends, 'ProductTypeList': ProductTypeList,
                'ProdAndPhoto': ProdAndPhoto, 'find_price_form': price_form,
-               'product_type': product_type}
+               'product_type': product_type, 'gender': gender}
     return render(request, 'home/shop.html', context=context)
 
 
-def find_price_form(request, product_type):
+def find_price_form(request, product_type, gender):
+    IDGen = Gender.objects.get(gender_name=gender)
     if request.method == "POST":
         # Создаем объект формы с данными
         price_form = PriceFormSearch(request.POST)
@@ -34,12 +35,11 @@ def find_price_form(request, product_type):
             price_from = price_form.cleaned_data['price_from']
             price_to = price_form.cleaned_data['price_to']
             # Функция show_product вернет результат поиска
-            ProductObj = show_product(request, product_type, [price_from, price_to])
+            ProductObj = show_product(request, product_type, [price_from, price_to], IDGen.id)
             ProductTypeList = ProductType.objects.all()
-            context = {'ProdAndPhoto': ProductObj,
-                       'ProductTypeList': ProductTypeList,
-                       'product_type': product_type,
-                       'find_price_form': price_form}
+            context = {'ProdAndPhoto': ProductObj, 'ProductTypeList': ProductTypeList,
+                       'product_type': product_type, 'find_price_form': price_form,
+                       'gender': gender}
             return render(request, 'home/shop.html', context=context)
         else:
             price_form.add_error(None, 'form1 Ошибка добавления бренда')

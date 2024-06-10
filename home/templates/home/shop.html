@@ -482,7 +482,8 @@
                         </div>
                         <div class="single__widget price__filter widget__bg">
                             <h2 class="widget__title h3">Фильтр по ценам</h2>
-                            <form class="price__filter--form" action="{% url 'find_price_form' product_type %}" method="POST" enctype="multipart/form-data">
+                            <form class="price__filter--form" action="{% url 'find_price_form' product_type=product_type gender=gender %}" method="POST" enctype="multipart/form-data">
+                                {{ gender }}
                                 {% csrf_token %}
                                 <div class="price__filter--form__inner mb-15 d-flex align-items-center">
                                     <div class="price__filter--group">
