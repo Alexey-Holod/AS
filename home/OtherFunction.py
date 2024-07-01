@@ -8,11 +8,17 @@ def check_gender(Prod, gender):
         Prod = Prod.exclude(Product_gender=2)
     return Prod
 
-def show_product(request, product_type=0, rang_price=[], gender=''):
+
+def show_product(request, product_type=0, rang_price=[], gender='', age='',):
     if product_type == 0 and len(rang_price) == 0:
         Prod = Product.objects.all()
     elif len(rang_price) == 2:
-        Prod = Product.objects.filter(Product_type=product_type)
+
+        if age != '':
+            # Prod = Product.objects.filter(Product_type=product_type).filter(Product_age_category=age)
+            Prod = Product.objects.filter(Product_age_category=age).filter(Product_type=product_type)
+        else:
+            Prod = Product.objects.filter(Product_type=product_type)
         Prod = check_gender(Prod, gender)
         for pd in Prod:
             if (int(pd.Product_price) < int(rang_price[0])) or (int(pd.Product_price) > int(rang_price[1])):

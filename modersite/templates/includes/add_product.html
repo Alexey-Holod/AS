@@ -1,0 +1,46 @@
+ <form id="op" class="po" action="{% url 'moder' %}" method="POST" enctype="multipart/form-data">
+            <div class="add_product-container">
+                <div class="add_product-col1 back-color">
+                    <label class="#" for="{{ FormAddProduct.Posted_by.id_for_label }}">{{ FormAddProduct.Posted_by.label }}</label>
+                          {{ FormAddProduct.Posted_by }} </br>
+
+                    <label class="#" for="{{ FormAddProduct.Name_product.id_for_label }}">{{ FormAddProduct.Name_product.label }}</label>
+                          {{ FormAddProduct.Name_product }} </br>
+
+                    <label class="#" for="{{ FormAddProduct.Product_brand.id_for_label }}">{{ FormAddProduct.Product_brand.label }}</label>
+                          {{ FormAddProduct.Product_brand }} </br>
+
+                    <label class="#" for="{{ FormAddProduct.Product_type.id_for_label }}">{{ FormAddProduct.Product_type.label }}</label>
+                          {{ FormAddProduct.Product_type }} </br>
+
+                    <label class="#" for="#">Распродажа: {{ FormAddProduct.Product_sale }} </label>
+                          </br>
+
+
+                    <label class="#" for="#">Ткань: {{ FormAddProduct.Product_textile }} </label>
+                          </br>
+
+
+                {% if chekform %}
+                    <br>
+                    <h4>Заполните все поля и выпадающие списки!</h4>
+                {% endif %}
+                </div>
+
+                <div class="add_product-col2 back-color">
+                    <label class="#" for="{{ FormAddProduct.Product_gender.id_for_label }}">{{ FormAddProduct.Product_gender.label }}</label>
+                          {{ FormAddProduct.Product_gender }} </br>
+
+                    <label class="#" for="{{ FormAddProduct.Product_age_category.id_for_label }}">{{ FormAddProduct.Product_age_category.label }}</label>
+                          {{ FormAddProduct.Product_age_category }} </br>
+
+                    <label class="#" for="{{ FormAddProduct.Product_price.id_for_label }}">Размеры:</label>
+                          {{ FormAddProduct.Product_size }} </br>
+
+                    <label class="#" for="{{ FormAddProduct.Product_price.id_for_label }}">{{ FormAddProduct.Product_price.label }}</label>
+                          {{ FormAddProduct.Product_price }} </br></br> {{ FormAddProduct.errors }}
+                    <button class="primary__btn" type="submit">Далее</button>
+                </div>
+            </div>
+            {% csrf_token %}
+        </form>

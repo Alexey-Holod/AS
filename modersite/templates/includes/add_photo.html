@@ -1,5 +1,5 @@
 <form enctype="multipart/form-data" action="{% url 'LoadPhoto' prod_id %}" href='#' method="POST">
-    <h1>{{ prod_id }}</h1>
+    <h1>ID продукта: {{ prod_id }}</h1>
     {% csrf_token %}
     {{ FormAddPhotoProduct }} <br>
     <p class="link-read-lot">

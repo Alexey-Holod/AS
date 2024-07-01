@@ -19,13 +19,14 @@ def shop(request, product_type, gender):
     ProdAndPhoto = show_product(request, product_type, [], IDGen.id)
     ProductTypeList = ProductType.objects.all()
     price_form = PriceFormSearch
-    context = {'Brends': Brends, 'ProductTypeList': ProductTypeList,
-               'ProdAndPhoto': ProdAndPhoto, 'find_price_form': price_form,
+    AgeRange = AgeCategory.objects.all()
+    context = {'Product_age_category': '00-00', 'Brends': Brends, 'ProductTypeList': ProductTypeList,
+               'ProdAndPhoto': ProdAndPhoto, 'find_price_form': price_form, 'AgeRange': AgeRange,
                'product_type': product_type, 'gender': gender}
     return render(request, 'home/shop.html', context=context)
 
 
-def find_price_form(request, product_type, gender):
+def find_price_form(request, product_type, gender, Product_age_category):
     IDGen = Gender.objects.get(gender_name=gender)
     if request.method == "POST":
         # Создаем объект формы с данными
@@ -34,10 +35,12 @@ def find_price_form(request, product_type, gender):
             # Распихиваем очищенные данные по переменным
             price_from = price_form.cleaned_data['price_from']
             price_to = price_form.cleaned_data['price_to']
+            price_Product_age_category = price_form.cleaned_data['Product_age_category']
+            print('000000000000000000000000000000000000000000000000', price_Product_age_category)
             # Функция show_product вернет результат поиска
-            ProductObj = show_product(request, product_type, [price_from, price_to], IDGen.id)
+            ProductObj = show_product(request, product_type, [price_from, price_to], IDGen.id, price_Product_age_category)
             ProductTypeList = ProductType.objects.all()
-            context = {'ProdAndPhoto': ProductObj, 'ProductTypeList': ProductTypeList,
+            context = {'Product_age_category': price_Product_age_category, 'ProdAndPhoto': ProductObj, 'ProductTypeList': ProductTypeList,
                        'product_type': product_type, 'find_price_form': price_form,
                        'gender': gender}
             return render(request, 'home/shop.html', context=context)

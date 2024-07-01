@@ -4,7 +4,6 @@ from home.models import *
 
 #Форма для добавления товара
 class AddProduct(forms.ModelForm):
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['Product_brand'].empty_label = 'Не-выбрано'
@@ -20,13 +19,14 @@ class AddProduct(forms.ModelForm):
         model = Product
         fields = ['Name_product', 'Product_brand',
                   'Product_type', 'Product_gender',
-                  'Product_age_category', 'Product_size',
-                  'Product_price', 'Product_sale']
+                  'Product_textile', 'Product_age_category',
+                  'Product_size', 'Product_price', 'Product_sale']
         widgets = {
             'Name_product': forms.TextInput(attrs={'class': 'datalot'}),
             'Product_brand': forms.Select(attrs={'class': 'datalot'}),
             'Product_type': forms.Select(attrs={'class': 'datalot'}),
             'Product_gender': forms.Select(attrs={'class': 'datalot'}),
+            'Product_textile': forms.Select(attrs={'class': 'datalot'}),
             'Product_age_category': forms.Select(attrs={'class': 'datalot'}),
             'Product_price': forms.TextInput(attrs={'class': 'datalot', 'type': 'number', 'maxlength': '9'}),
             'Product_sale': forms.CheckboxInput(),
@@ -64,13 +64,23 @@ class AddAgeCategory(forms.ModelForm):
         }
 
 
-#Форма для добавления
+#Форма для добавления возрастных категорий
 class AddSize(forms.ModelForm):
     class Meta:
         model = Size
         fields = ['size_range', ]
         widgets = {
             'size_range': forms.TextInput(attrs={'class': 'datalot'}),
+        }
+
+
+#Форма для добавления тканей
+class AddTextile(forms.ModelForm):
+    class Meta:
+        model = Textile
+        fields = ['textile_name', ]
+        widgets = {
+            'textile_name': forms.TextInput(attrs={'class': 'datalot'}),
         }
 
 

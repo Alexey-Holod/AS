@@ -13,6 +13,7 @@ class Product(models.Model):
     Product_sale = models.BooleanField(verbose_name='Распродажа')
     Product_code = models.CharField(max_length=1000, verbose_name='Артикул')
     Product_size = models.ManyToManyField('Size', verbose_name='Размер', related_name='sizes')
+    Product_textile = models.ForeignKey('Textile', on_delete=models.PROTECT, blank=True, verbose_name='Ткань')
     def __str__(self):
         Product_ID = str(self.id)
         return Product_ID
@@ -39,6 +40,18 @@ class PhotoProduct(models.Model):
     class Meta:
         verbose_name = 'Фото товара'
         verbose_name_plural = 'Фотографии товара'
+        ordering = ['id']
+
+
+class Textile(models.Model):
+    textile_name = models.CharField(max_length=1000, verbose_name='Название ткани')
+
+    def __str__(self):
+        return self.textile_name
+
+    class Meta:
+        verbose_name = 'Ткань'
+        verbose_name_plural = 'Ткани'
         ordering = ['id']
 
 

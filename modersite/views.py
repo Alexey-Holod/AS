@@ -14,6 +14,7 @@ def moder(request):
         FormAddProduct = AddProduct(request.POST)
         if FormAddProduct.is_valid():
             ProductObj = FormAddProduct.save(commit=False)
+            FormAddPhotoProduct = AddPhotoProduct
             try:
                 Article = (str(ProductObj.Product_brand.id) + '.' + str(ProductObj.Product_type.id) + '.' +
                                str(ProductObj.Product_type.id) + '.' + str(ProductObj.Product_gender.id))
@@ -22,15 +23,18 @@ def moder(request):
                 ProductObj.save()
                 #PhotoOneProduct = ProductObj.images.all()
                 ProductObj.Product_size.set(request.POST.getlist('Product_size'))
-                FormAddPhotoProduct = AddPhotoProduct
-                context = {'FormAddProduct': FormAddPhotoProduct,
-                           'title': 'Добавить фото', 'PhotoOneProduct': FormAddPhotoProduct,
-                           'prod_id': ProductObj.id}
-
             except:
                 # Если возникла ошибка значит не все поля были заполнены
                 # Ставим флаг в значение TRUE и передаем на форму, там разберуться что с этим делать...
                 chekform = True
+                context = {'FormAddProduct': FormAddProduct,
+                           'title': 'Добавить фото', 'PhotoOneProduct': FormAddPhotoProduct,
+                           'chekform': chekform}
+                return render(request, 'modersite/moder.html', context=context)
+
+            context = {'FormAddProduct': FormAddProduct, 'title': '&&&',
+                       'PhotoOneProduct': FormAddPhotoProduct,
+                       'prod_id': ProductObj.id, 'chekform': chekform}
             return render(request, 'modersite/edit_product.html', context=context)
         else:
             FormAddProduct.add_error(None, 'form1 Ошибка добавления лота')
@@ -39,20 +43,24 @@ def moder(request):
     FormAddProductType = AddProductType
     FormAddAgeCategory = AddAgeCategory
     FormAddSize = AddSize
+    FormAddTextile=AddTextile
     ProdType = ProductType.objects.all()
     Brands = Brand.objects.all()
     AgeCategories = AgeCategory.objects.all()
     Sizes = Size.objects.all()
+    Textiles = Textile.objects.all()
     context = {'FormAddProduct': FormAddProduct,
                'ProdAndPhoto': ShoweProduct,
                'FormAddBrand': FormAddBrand,
                'FormAddProductType': FormAddProductType,
                'FormAddAgeCategory': FormAddAgeCategory,
                'FormAddSize': FormAddSize,
+               'FormAddTextile': FormAddTextile,
                'Brands': Brands,
                'ProdType': ProdType,
                'AgeCategories': AgeCategories,
                'Sizes': Sizes,
+               'Textiles': Textiles,
                'ProductTypeList': ProductTypeList,
                'chekform': chekform}
     return render(request, 'modersite/moder.html', context=context)
@@ -105,6 +113,19 @@ def size(request):
             FormAddSize.add_error(None, 'form1 Ошибка добавления бренда')
     return redirect('moder')
 
+
+def textile(request):
+    if request.method == "POST":
+        FormAddTextile = AddTextile(request.POST)
+        if FormAddTextile.is_valid():
+            SizeObj = FormAddTextile.save(commit=False)
+            SizeObj.save()
+            return redirect('moder')
+        else:
+            FormAddTextile.add_error(None, 'form1 Ошибка добавления ткани')
+    return redirect('moder')
+
+
 def delete(request, table, id):
     if table == 'Size':
         Size.objects.filter(id=id).delete()
@@ -114,6 +135,8 @@ def delete(request, table, id):
         ProductType.objects.filter(id=id).delete()
     elif table == 'Brands':
         Brand.objects.filter(id=id).delete()
+    elif table == 'Textile':
+        Textile.objects.filter(id=id).delete()
     else:
         ErrMess = 'Не удалось определить модель или атрибут =( '
     return redirect('moder')
