@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block style %}
+    <link type="text/css" href="{% static 'auth_user_do/css/user.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block home_page %}
+<div class="registration-cssave">
+    <br>
+    <form class="text-center" method="post">
+        {% csrf_token %}
+        <h3 class="text-center">Форма Регистрации</h3>
+        {{ form }}
+        <br>
+        <div class="form-group">
+            <button class="primary__btn" type="submit">Регистрация</button>
+        </div>
+    </form>
+    <br>
+</div>
+{% endblock %}

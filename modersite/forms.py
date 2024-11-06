@@ -6,10 +6,10 @@ from home.models import *
 class AddProduct(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['Product_brand'].empty_label = 'Не-выбрано'
-        self.fields['Product_type'].empty_label = 'Не-выбрано'
-        self.fields['Product_gender'].empty_label = 'Не-выбрано'
-        self.fields['Product_age_category'].empty_label = 'Не-выбрано'
+        # self.fields['Product_brand'].empty_label = 'Не-выбрано'
+        # self.fields['Product_type'].empty_label = 'Не-выбрано'
+        # self.fields['Product_gender'].empty_label = 'Не-выбрано'
+        # self.fields['Product_age_category'].empty_label = 'Не-выбрано'
 
     Product_size = forms.ModelMultipleChoiceField(
         queryset=Size.objects.all(),
@@ -20,7 +20,9 @@ class AddProduct(forms.ModelForm):
         fields = ['Name_product', 'Product_brand',
                   'Product_type', 'Product_gender',
                   'Product_textile', 'Product_age_category',
-                  'Product_size', 'Product_price', 'Product_sale']
+                  'Product_size', 'Product_price',
+                  'Product_sale', 'AvailabilityInStock',
+                  'Product_quantity']
         widgets = {
             'Name_product': forms.TextInput(attrs={'class': 'datalot'}),
             'Product_brand': forms.Select(attrs={'class': 'datalot'}),
@@ -30,6 +32,8 @@ class AddProduct(forms.ModelForm):
             'Product_age_category': forms.Select(attrs={'class': 'datalot'}),
             'Product_price': forms.TextInput(attrs={'class': 'datalot', 'type': 'number', 'maxlength': '9'}),
             'Product_sale': forms.CheckboxInput(),
+            'AvailabilityInStock': forms.CheckboxInput(),
+            'Product_quantity': forms.TextInput(attrs={'class': 'datalot', 'type': 'number', 'maxlength': '9'}),
         }
 
 

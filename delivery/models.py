@@ -1,14 +1,19 @@
 from django.db import models
 from home.models import Product
+from django.contrib.auth.models import User
 
 
 class ProductDelivery(models.Model):
-    ClientMAil = models.EmailField()
-    ClientPhone = models.IntegerField(max_length=11,)
+
+    ClientPhone = models.IntegerField()
     ClientAddres = models.CharField(max_length=500,)
-    ClientName = models.TextField(max_length=500,)
+    ClientName = models.TextField(max_length=500,) # Имя заказчика
+    Customer = models.ForeignKey(User, on_delete=models.CASCADE)
+    Name_product = models.ForeignKey('DeliveryStatus', on_delete=models.PROTECT,
+                                     blank=True, verbose_name='Статус доставки')
     ProductID = models.ForeignKey(Product, on_delete=models.PROTECT, blank=True, verbose_name='Товар')
-    Name_product = models.ForeignKey('DeliveryStatus', on_delete=models.PROTECT, blank=True, verbose_name='Статус доставки')
+    date = models.DateField(blank=True, default=None) # Дата заказа
+
 
     def __str__(self):
         ProductDelivery_ID = str(self.id)
@@ -24,7 +29,7 @@ class DeliveryStatus(models.Model):
     Status = models.TextField(max_length=500,)
 
     def __str__(self):
-        DeliveryStatus_ID = str(self.id)
+        DeliveryStatus_ID = str(self.Status)
         return DeliveryStatus_ID
 
     class Meta:

@@ -307,12 +307,6 @@
                                 <h2 class="widget__title h3">Возростная категория</h2>
 
 
-
-
-
-
-
-
                                 <div class="single__widget widget__bg">
                                     <!-- <ul class="widget__categories--menu">
                                         <li class="widget__categories--menu__list">
@@ -355,13 +349,6 @@
                                 </div>
 
 
-
-
-
-
-
-
-
                                 {% csrf_token %}
                                 <h2 class="widget__title h3">Фильтр по ценам</h2>
                                 <div class="price__filter--form__inner mb-15 d-flex align-items-center">
@@ -392,6 +379,7 @@
                                 {% if er %}
                                     <p> Введите числовой диапозон цен. </p>
                                 {% endif %}
+                                {{ age_category }}
                                 <button class="price__filter--btn primary__btn" type="submit">Поиск</button>
                             </form>
                         </div>

@@ -11,6 +11,8 @@ class Product(models.Model):
     Product_age_category = models.ForeignKey('AgeCategory', on_delete=models.PROTECT, blank=True, verbose_name='Возростная категория')
     Product_price = models.CharField(max_length=20, verbose_name='Цена')
     Product_sale = models.BooleanField(verbose_name='Распродажа')
+    AvailabilityInStock = models.BooleanField(verbose_name='На складе')
+    Product_quantity = models.IntegerField(blank=True, verbose_name='Количество')
     Product_code = models.CharField(max_length=1000, verbose_name='Артикул')
     Product_size = models.ManyToManyField('Size', verbose_name='Размер', related_name='sizes')
     Product_textile = models.ForeignKey('Textile', on_delete=models.PROTECT, blank=True, verbose_name='Ткань')
@@ -114,3 +116,8 @@ class Size(models.Model):
         verbose_name = 'Размер одежды'
         verbose_name_plural = 'Размеры одежды'
         ordering = ['id']
+
+class UserDesire(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT, blank=True, verbose_name='Желающий')
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, blank=True, verbose_name='Желаемое')
+    quantity_desire = models.IntegerField(blank=True, verbose_name='Количество желаемого')

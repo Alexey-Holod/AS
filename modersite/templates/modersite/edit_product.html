@@ -11,7 +11,9 @@
 
 <div class="container-forms">
     <div class="add_product_params">
+        <form enctype="multipart/form-data" action="{% url 'edit_product' prod_id %}" href='#' method="POST">
         {% include 'includes/add_product.html' %}
+        </form>
     </div>
 </div>
 <div>

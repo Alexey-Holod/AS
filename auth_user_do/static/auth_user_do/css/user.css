@@ -1,0 +1,53 @@
+.wrapper{
+  --secondary-color: #ffffff;
+  color: #345345;
+  border: 2px solid #ffffff;
+  width: auto;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 1px;
+  padding-bottom: 0px
+  height: auto;
+  position: fixed;
+  top: 2%;
+  left: 95%;
+  transform: translate(-50%, -50%);
+}
+
+auser {
+  display: block;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #000;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+}
+
+auser span{
+  position: relative;
+  z-index: 2;
+}
+
+auser:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #ffffff;
+  transition: all .65s;
+}
+
+auser:hover{
+  color: #fff;
+}
+
+auser:hover:after{
+  width: 100%;
+}

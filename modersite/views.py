@@ -146,9 +146,10 @@ def delete(request, table, id):
 def edit_product(request, prod_id):
     prod_edit = Product.objects.get(id=prod_id)
     if request.method == 'POST':
+        # form = AddProduct(request.POST)
         form = AddProduct(request.POST, instance=prod_edit)
         if form.is_valid():
-            #prod_edit.publication_status = moder_lot_status.objects.get(id=1)
+            # prod_edit.publication_status = moder_lot_status.objects.get(id=1)
             prod_edit.save()
             form.save()
             return redirect('moder')
@@ -158,7 +159,7 @@ def edit_product(request, prod_id):
     context = {
         'prod_id': prod_id, 'PhotoOneProduct': PhotoOneProduct,
         'title': 'Редактирование товара', 'FormAddPhotoProduct': FormAddPhotoProduct,
-        'prod_edit': prod_edit, 'FormAddProduct': AddProduct(instance=prod_edit)}
+        'prod_edit': prod_edit, 'FormAddProduct': AddProduct(instance=ProdDetails)}
     return render(request, 'modersite/edit_product.html',  context=context)
 
 
@@ -185,11 +186,11 @@ def delete_one_photo(request, prod_id, id_photo):
 def delete_product(request, prod_id):
     product_delete = Product.objects.filter(id=prod_id)
     photo_product_delete = PhotoProduct.objects.filter(Product_link=prod_id)
+    product_delete.delete()
     if photo_product_delete:
         for ph in photo_product_delete:
             ph.product_photo.delete(save=True)
         photo_product_delete.delete()
-    product_delete.delete()
     return redirect('moder')
 
 
