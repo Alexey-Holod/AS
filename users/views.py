@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from delivery.models import ProductDelivery, DeliveryStatus
 from django.utils.translation.template import context_re
-from home.OtherFunction import check_user_cart
+from home.OtherFunction import check_user_cart, show_product
 
 
 def user_home(request, user_id):
@@ -11,7 +11,10 @@ def user_home(request, user_id):
 
 # корзина покупателя
 def user_cart(request, user_id):
+
     Cart = ProductDelivery.objects.filter(Customer=user_id).filter(Name_product=1)
+
+
     # передаю в шаблон переменную 'label':'user_cart' для отрисовки кнопки-значек корзина
     context = {'orders': Cart, 'label':'user_cart'}
     # Обработка проверки товаров корзины

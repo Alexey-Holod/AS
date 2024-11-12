@@ -6,6 +6,8 @@ from .models import ProductDelivery, DeliveryStatus
 
 
 def add_to_cart(request, id_product):
+    if str(request.user) == 'AnonymousUser':
+        return redirect('auth_user_do')
     GetProduct = Product.objects.get(id = id_product)
     P_D = ProductDelivery()
     DelStatus = DeliveryStatus.objects.get(id = 1)

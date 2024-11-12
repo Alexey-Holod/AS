@@ -63,7 +63,7 @@ def find_price_form(request, product_type, gender, Product_age_category):
                        'product_type': product_type,
                        'find_price_form': price_form,
                        'gender': gender,
-                       # Для того чтобы отобрачить возрастную категорию
+                       # Для того чтобы отобразить возрастную категорию
                        'age_category': price_Product_age_category}
             return render(request, 'home/shop.html', context=context)
         else:
