@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from delivery.models import ProductDelivery, DeliveryStatus
 from django.utils.translation.template import context_re
 from home.OtherFunction import check_user_cart, show_product
+from home.models import Product
 
 
 def user_home(request, user_id):
@@ -13,7 +14,12 @@ def user_home(request, user_id):
 def user_cart(request, user_id):
 
     Cart = ProductDelivery.objects.filter(Customer=user_id).filter(Name_product=1)
-
+    ID_Prod = []
+    for i in Cart:
+        ID_Prod.append(i.ProductID)
+    print('---ye---', ID_Prod)
+    ProdCartImage = Product.objects.filter(id = ID_Prod[0])
+    print('---ye---', ProdCartImage)
 
     # передаю в шаблон переменную 'label':'user_cart' для отрисовки кнопки-значек корзина
     context = {'orders': Cart, 'label':'user_cart'}
