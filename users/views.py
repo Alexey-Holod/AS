@@ -11,14 +11,14 @@ def user_home(request, user_id):
     return render(request, 'users/my-account.html', context = context)
 
 # корзина покупателя
+# Name_product - Статус доставки
 def user_cart(request, user_id):
-
     Cart = ProductDelivery.objects.filter(Customer=user_id).filter(Name_product=1)
     ID_Prod = []
     for i in Cart:
         ID_Prod.append(i.ProductID)
     print('---ye---', ID_Prod)
-    ProdCartImage = Product.objects.filter(id = ID_Prod[0])
+    ProdCartImage = Product.objects.filter(id = ID_Prod[0].id)
     print('---ye---', ProdCartImage)
 
     # передаю в шаблон переменную 'label':'user_cart' для отрисовки кнопки-значек корзина
