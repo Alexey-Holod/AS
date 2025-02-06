@@ -8,6 +8,11 @@ def check_gender(Prod, gender):
         Prod = Prod.exclude(Product_gender=2)
     return Prod
 
+def take_photos(Prod):
+    ProdAndPhoto = {}
+    for item_prod in Prod:
+        ProdAndPhoto[item_prod] = item_prod.images.all()[:4]
+    return ProdAndPhoto
 
 def show_product(request, product_type=0, rang_price=[], gender='', age='None',):
     if product_type == 0 and len(rang_price) == 0:
@@ -26,9 +31,7 @@ def show_product(request, product_type=0, rang_price=[], gender='', age='None',)
     else:
         Prod = Product.objects.filter(Product_type=product_type)
         Prod = check_gender(Prod, gender)
-    ProdAndPhoto = {}
-    for item_prod in Prod:
-        ProdAndPhoto[item_prod] = item_prod.images.all()[:4]
+    ProdAndPhoto = take_photos(Prod)
     return ProdAndPhoto
 
 # Проверяем корзину, показываем какие товары в корзине и сколько их

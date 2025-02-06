@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from delivery.models import ProductDelivery, DeliveryStatus
 from django.utils.translation.template import context_re
-from home.OtherFunction import check_user_cart, show_product
+from home.OtherFunction import check_user_cart, show_product, take_photos
 from home.models import Product
 
 
@@ -13,21 +13,27 @@ def user_home(request, user_id):
 # корзина покупателя
 # Name_product - Статус доставки
 def user_cart(request, user_id):
-    Cart = ProductDelivery.objects.filter(Customer=user_id).filter(Name_product=1)
-    ID_Prod = []
-    for i in Cart:
-        ID_Prod.append(i.ProductID)
-    print('---ye---', ID_Prod)
-    ProdCartImage = Product.objects.filter(id = ID_Prod[0].id)
-    print('---ye---', ProdCartImage)
+    '''Удали к хуям содержимое этой функции и используй сетку со слайдерами как на страртовой
+    с фильтром по корзине покупателя и доп. информацией и таблицы ProductDelivery'''
+    Delivery = ProductDelivery.objects.filter(Customer=user_id).filter(Name_product=1)
+    ProdAndPhotoInCart = []
+    for i in Delivery:
+        ProdAndPhotoInCart.append(i.ProductID) # Почему-то не удается получить фотки. Надо допилить!
+
+
+    ProdCartImage = Product.objects.filter(id = ProdAndPhotoInCart[0].id)
+    print('---y2e---', len(ProdCartImage))
 
     # передаю в шаблон переменную 'label':'user_cart' для отрисовки кнопки-значек корзина
-    context = {'orders': Cart, 'label':'user_cart'}
+    context = {'orders': Delivery, 'label':'user_cart'}
+    # Получаем фотки для слайдеров
     # Обработка проверки товаров корзины
     if (str(request.user) != 'AnonymousUser'):
         check_user_cart1 = check_user_cart(request)
         # Чтобы показать какие товары уже в корзине и сколько их
         context['User_cart'] = check_user_cart1['U_cart']
+
+        context['ProdAndPhotoInCart'] = ProdAndPhotoInCart
         # Показать общее количество товаров в корзине на значке корзины
         context['quantity_of_goods'] = check_user_cart1['quantity_of_goods']
     return render(request, 'users/my-account.html', context=context)
