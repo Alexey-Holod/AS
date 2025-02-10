@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from delivery.models import ProductDelivery, DeliveryStatus
 from django.utils.translation.template import context_re
 from home.OtherFunction import check_user_cart, show_product, take_photos
-from home.models import Product
+from home.models import Product, ProductType
 
 
 def user_home(request, user_id):
@@ -13,29 +13,30 @@ def user_home(request, user_id):
 # корзина покупателя
 # Name_product - Статус доставки
 def user_cart(request, user_id):
-    '''Удали к хуям содержимое этой функции и используй сетку со слайдерами как на страртовой
-    с фильтром по корзине покупателя и доп. информацией и таблицы ProductDelivery'''
-    Delivery = ProductDelivery.objects.filter(Customer=user_id).filter(Name_product=1)
-    ProdAndPhotoInCart = []
-    for i in Delivery:
-        ProdAndPhotoInCart.append(i.ProductID) # Почему-то не удается получить фотки. Надо допилить!
-
-
-    ProdCartImage = Product.objects.filter(id = ProdAndPhotoInCart[0].id)
-    print('---y2e---', len(ProdCartImage))
-
-    # передаю в шаблон переменную 'label':'user_cart' для отрисовки кнопки-значек корзина
-    context = {'orders': Delivery, 'label':'user_cart'}
-    # Получаем фотки для слайдеров
-    # Обработка проверки товаров корзины
-    if (str(request.user) != 'AnonymousUser'):
+    # Получаем товары с фотками для корзины покупателя
+    HomePage = show_product(request)
+    # Если пользователь авторизован, то стоит узнать,
+    # какие товары он имеет в корзине и отметить их
+    if str(request.user) != 'AnonymousUser':
+        # Обработка проверки товаров корзины вынесена в отдельный экспортируемый файл
+        # потому то к ней будем обращаться и в других функциях и даже модулях
         check_user_cart1 = check_user_cart(request)
-        # Чтобы показать какие товары уже в корзине и сколько их
-        context['User_cart'] = check_user_cart1['U_cart']
-
-        context['ProdAndPhotoInCart'] = ProdAndPhotoInCart
-        # Показать общее количество товаров в корзине на значке корзины
-        context['quantity_of_goods'] = check_user_cart1['quantity_of_goods']
+        exclud = []
+        for i in HomePage:
+            if i in check_user_cart1['U_cart'].keys():
+                pass
+            else:
+                exclud.append(i)
+        for i in exclud:
+            del HomePage[i]
+        ProductTypeList = ProductType.objects.all()
+        context = {'ProdAndPhoto': HomePage,
+                   # Получаем типы продуктов для пунктов меню
+                   'ProductTypeList': ProductTypeList,
+                   'User_cart': check_user_cart1['U_cart'],
+                   'quantity_of_goods':check_user_cart1['quantity_of_goods'],
+                   # Флаг для отрисовки кнопки удаления товара из корзины
+                   'cart': True}
     return render(request, 'users/my-account.html', context=context)
 
 
@@ -57,7 +58,9 @@ def buy(request, order_id, flag):
 
 
 def user_cart_del(request, order_id, flag):
-    ProductDelivery.objects.filter(id=order_id).delete()
+    # Удаляем заказ из таблицы заказов
+    ProductDelivery.objects.filter(ProductID=order_id).filter(Customer=request.user).delete()
+
     context = {}
     if flag == 'cart':
         context['label'] = 'user_cart'
