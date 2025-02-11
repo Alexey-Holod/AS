@@ -39,13 +39,9 @@ def show_product(request, product_type=0, rang_price=[], gender='', age='None',)
 def check_user_cart(request, ):
     User_cart = ProductDelivery.objects.filter(Customer=request.user.id).filter(Name_product=1)
     U_cart = {}
-    How_many_pieces = 0
     for i in User_cart:
         if i.ProductID in U_cart:
-            How_many_pieces += 1
+            U_cart[i.ProductID] += 1
         else:
-            How_many_pieces = 1
-        print('-----*-----', U_cart)
-        U_cart[i.ProductID] = How_many_pieces
-    print('USER ----0---- ', U_cart)
+            U_cart[i.ProductID] = 1
     return {'U_cart': U_cart, 'quantity_of_goods': len(User_cart)}
