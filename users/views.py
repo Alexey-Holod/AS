@@ -59,19 +59,5 @@ def buy(request, order_id, flag):
 
 def user_cart_del(request, order_id, flag):
     # Удаляем заказ из таблицы заказов
-    ProductDelivery.objects.filter(ProductID=order_id).filter(Customer=request.user).delete()
-
-    context = {}
-    if flag == 'cart':
-        context['label'] = 'user_cart'
-        Cart = ProductDelivery.objects.filter(Customer=request.user).filter(Name_product=1)
-    elif flag == 'orders':
-        Cart = ProductDelivery.objects.filter(Customer=request.user).filter(Name_product=2)
-    context['orders'] = Cart
-    if (str(request.user) != 'AnonymousUser'):
-        check_user_cart1 = check_user_cart(request)
-        # Чтобы показать какие товары уже в корзине и сколько их
-        context['User_cart'] = check_user_cart1['U_cart']
-        # Показать общее количество товаров в корзине на значке корзины
-        context['quantity_of_goods'] = check_user_cart1['quantity_of_goods']
-    return render(request, 'users/my-account.html', context=context)
+    ProductDelivery.objects.filter(ProductID=order_id).filter(Customer=request.user).first().delete()
+    return user_cart(request, request.user)

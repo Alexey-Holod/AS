@@ -11,7 +11,6 @@ def home(request):
     ProductTypeList = ProductType.objects.all()
     context = {'ProdAndPhoto': HomePage,
                'ProductTypeList': ProductTypeList}
-
     # Если пользователь авторизован, то стоит узнать,
     # какие товары он имеет в корзине и отметить их
     if (str(request.user) != 'AnonymousUser'):
@@ -22,7 +21,6 @@ def home(request):
         context['User_cart'] = check_user_cart1['U_cart']
         # Показать общее количество товаров в корзине на значке корзины
         context['quantity_of_goods'] = check_user_cart1['quantity_of_goods']
-
     return render(request, 'home/home.html', context)
 
 
