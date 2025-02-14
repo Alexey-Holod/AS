@@ -21,19 +21,31 @@ def user_cart(request, user_id):
         # Обработка проверки товаров корзины вынесена в отдельный экспортируемый файл
         # потому то к ней будем обращаться и в других функциях и даже модулях
         check_user_cart1 = check_user_cart(request)
-        exclud = []
-        for i in HomePage:
-            if i in check_user_cart1['U_cart'].keys():
-                pass
-            else:
-                exclud.append(i)
-        for i in exclud:
-            del HomePage[i]
+        #-------------------------------------------------
+        CART = []
+        for i in check_user_cart1['User_cart']:
+            print('**--**', i.ProductID, '\n')
+            CART.append({i:HomePage[i.ProductID]})
+            print('HomePage[i.ProductID] --', HomePage[i.ProductID], '\n')
+        print('--------------', type(HomePage))
+        for i in CART:
+            print('++*CART*++', i, '\n')
+        #-------------------------------------------------
+        # exclud = []
+        # for i in HomePage:
+        #     if i in check_user_cart1['U_cart'].keys():
+        #         pass
+        #     else:
+        #         exclud.append(i)
+        # for i in exclud:
+        #     del HomePage[i]
         ProductTypeList = ProductType.objects.all()
-        context = {'ProdAndPhoto': HomePage,
+        context = {'ProdAndPhoto': CART,
                    # Получаем типы продуктов для пунктов меню
                    'ProductTypeList': ProductTypeList,
+                   # Количество одинаковых товаров в корзине
                    'User_cart': check_user_cart1['U_cart'],
+                   # Общее количество товаров в корзине
                    'quantity_of_goods':check_user_cart1['quantity_of_goods'],
                    # Флаг для отрисовки кнопки удаления товара из корзины
                    'cart': True}

@@ -33,6 +33,7 @@ def show_product(request, product_type=0, rang_price=[], gender='', age='None',)
         Prod = Product.objects.filter(Product_type=product_type)
         Prod = check_gender(Prod, gender)
     ProdAndPhoto = take_photos(Prod)
+    print('++=++', type(ProdAndPhoto))
     return ProdAndPhoto
 
 # Проверяем корзину, показываем какие товары в корзине и сколько их
@@ -44,4 +45,5 @@ def check_user_cart(request, ):
             U_cart[i.ProductID] += 1
         else:
             U_cart[i.ProductID] = 1
-    return {'U_cart': U_cart, 'quantity_of_goods': len(User_cart)}
+    # Передаю товары которые в корзине через User_cart
+    return {'User_cart': User_cart, 'U_cart': U_cart, 'quantity_of_goods': len(User_cart)}
