@@ -8,7 +8,7 @@ def moder(request):
     if request.user.id == None or request.user.is_staff == False:
         return redirect('home')
     chekform = False
-    ShoweProduct = show_product(request)
+    ShoweProduct = show_product()
     ProductTypeList = ProductType.objects.all()
     if request.method == "POST":
         FormAddProduct = AddProduct(request.POST)

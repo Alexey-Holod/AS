@@ -1,5 +1,5 @@
 from django.db import models
-from home.models import Product
+from home.models import Product, Size
 from django.contrib.auth.models import User
 
 
@@ -13,6 +13,7 @@ class ProductDelivery(models.Model):
                                      blank=True, verbose_name='Статус доставки')
     ProductID = models.ForeignKey(Product, on_delete=models.PROTECT, blank=True, verbose_name='Товар')
     date = models.DateField(blank=True, default=None) # Дата заказа
+    ProductSize = models.ForeignKey(Size, on_delete=models.PROTECT, blank=True, verbose_name='Размер')
 
 
     def __str__(self):
