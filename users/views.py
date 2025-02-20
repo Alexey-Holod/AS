@@ -14,7 +14,7 @@ def user_home(request, user_id):
 # Name_product - Статус доставки
 def user_cart(request, user_id):
     # Получаем товары с фотками для корзины покупателя
-    HomePage = show_product(request)
+    HomePage = show_product()
     # Если пользователь авторизован, то стоит узнать,
     # какие товары он имеет в корзине и отметить их
     if str(request.user) != 'AnonymousUser':
@@ -23,13 +23,10 @@ def user_cart(request, user_id):
         check_user_cart1 = check_user_cart(request)
         #-------------------------------------------------
         CART = []
+        #print('--==--', HomePage)
         for i in check_user_cart1['User_cart']:
-            print('**--**', i.ProductID, '\n')
             CART.append({i:HomePage[i.ProductID]})
-            print('HomePage[i.ProductID] --', HomePage[i.ProductID], '\n')
-        print('--------------', type(HomePage))
-        for i in CART:
-            print('++*CART*++', i, '\n')
+
         #-------------------------------------------------
         # exclud = []
         # for i in HomePage:
@@ -71,5 +68,5 @@ def buy(request, order_id, flag):
 
 def user_cart_del(request, order_id, flag):
     # Удаляем заказ из таблицы заказов
-    ProductDelivery.objects.filter(ProductID=order_id).filter(Customer=request.user).first().delete()
+    ProductDelivery.objects.filter(id=order_id).delete()
     return user_cart(request, request.user)

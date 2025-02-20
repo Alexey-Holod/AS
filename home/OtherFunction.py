@@ -14,7 +14,7 @@ def take_photos(Prod):
         ProdAndPhoto[item_prod] = item_prod.images.all()[:4]
     return ProdAndPhoto
 
-def show_product(request, product_type=0, rang_price=[], gender='', age='None',):
+def show_product(product_type=0, rang_price=[], gender='', age='None',):
     if product_type == 0 and len(rang_price) == 0:
         Prod = Product.objects.all()
     elif len(rang_price) == 2:

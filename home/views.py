@@ -7,7 +7,7 @@ from delivery.models import ProductDelivery
 
 def home(request):
     # Получаем товары с фотками для главной страници
-    HomePage = show_product(request)
+    HomePage = show_product()
     ProductTypeList = ProductType.objects.all()
     context = {'ProdAndPhoto': HomePage,
                'ProductTypeList': ProductTypeList}
@@ -27,7 +27,7 @@ def home(request):
 def shop(request, product_type, gender):
     Brends = Brand.objects.all()
     IDGen = Gender.objects.get(gender_name=gender)
-    ProdAndPhoto = show_product(request, product_type, [], IDGen.id)
+    ProdAndPhoto = show_product(product_type, [], IDGen.id)
     ProductTypeList = ProductType.objects.all()
     price_form = PriceFormSearch
     AgeRange = AgeCategory.objects.all()
@@ -53,7 +53,7 @@ def find_price_form(request, product_type, gender, Product_age_category):
             price_to = price_form.cleaned_data['price_to']
             price_Product_age_category = price_form.cleaned_data['Product_age_category']
             # Функция show_product вернет результат поиска
-            ProductObj = show_product(request, product_type, [price_from, price_to], IDGen.id, price_Product_age_category)
+            ProductObj = show_product(product_type, [price_from, price_to], IDGen.id, price_Product_age_category)
             ProductTypeList = ProductType.objects.all()
             context = {'Product_age_category': price_Product_age_category,
                        'ProdAndPhoto': ProductObj,
