@@ -153,7 +153,9 @@
                                   <fieldset class="variant__input--fieldset weight">
                                       {% if flag == 'disable_size' %}
                                       <legend class="product__variant--title mb-8">Размер: {{ size }}</legend>
-                                      <button class="primary__btn" type="submit">ЗАКАЗАТЬ</button>
+                                      <a class="product__items--action__btn add__to--cart" href="{% url 'order' ProdDetails.id size %}">
+                                        <span class="add__to--cart__text"> + ЗАКАЗАТЬ</span>
+                                      </a>
                                       {% else %}
                                       <!--------------Начало-Блок-размеров--------------------->
                                       <legend class="product__variant--title mb-8">Размеры :</legend>
