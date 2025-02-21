@@ -144,7 +144,6 @@
                               <span class="old__price">$178</span> -->
                           </div>
                           <div class="product__details--info__meta">
-                              <p class="product__details--info__meta--list"><strong>ID:</strong>  <span>{{ ProdDetails.id }}</span> </p>
                               <p class="product__details--info__meta--list"><strong>Артикул:</strong>  <span>{{ ProdDetails.Product_code }}</span> </p>
                               <p class="product__details--info__meta--list"><strong>Бренд:</strong>  <span>{{ ProdDetails.Product_brand }}</span> </p>
                               <p class="product__details--info__meta--list"><strong>Тип:</strong>  <span>{{ ProdDetails.Product_type }}</span> </p>
@@ -154,6 +153,7 @@
                                   <fieldset class="variant__input--fieldset weight">
                                       {% if flag == 'disable_size' %}
                                       <legend class="product__variant--title mb-8">Размер: {{ size }}</legend>
+                                      <button class="primary__btn" type="submit">ЗАКАЗАТЬ</button>
                                       {% else %}
                                       <!--------------Начало-Блок-размеров--------------------->
                                       <legend class="product__variant--title mb-8">Размеры :</legend>

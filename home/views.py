@@ -71,6 +71,7 @@ def find_price_form(request, product_type, gender, Product_age_category):
 
 
 def product_details(request, produkt_id, size = '', flag = False):
+    # flag нужен для отключения кнопок "Добавить" при открытии товара из корзины
     ProdDetails = Product.objects.get(id=produkt_id)
     ProdPhoto = ProdDetails.images.all()
     ProdSize = ProdDetails.Product_size.all()
@@ -79,7 +80,8 @@ def product_details(request, produkt_id, size = '', flag = False):
                'ProdDetails': ProdDetails,
                'ProdPhoto': ProdPhoto,
                'ProdSize': ProdSize}
+    # Передаем размер если запрос пришел из корзины пользователя
     if flag:
-        context['size'] = size;
+        context['size'] = size
 
     return render(request, 'home/product-details.html', context)
