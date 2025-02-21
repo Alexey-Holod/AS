@@ -9,7 +9,7 @@
               <div class="col mb-30">
                 <div class="product__items">
                   <div class="product__items--thumbnail">
-                    <a class="product__items--link" href="{% url 'product_details' key.ProductID %}">
+                    <a class="product__items--link" href="{% url 'product_details' key.ProductID key.ProductSize 'disable_size' %}">
   <!------------------------------------------------------------------------------------------------------------->
                       {% include 'home/includes/product_slider.html' %}
   <!------------------------------------------------------------------------------------------------------------->
@@ -22,7 +22,7 @@
                     </div>
                   </div>
                     <div class="product__items--content">
-                      <h3 class="product__items--content__title h4"><a href="{% url 'edit_product' key.id %}">{{ key.Name_product }}</a></h3>
+                      <h3 class="product__items--content__title h4">{{ key.ProductID.Name_product }}</h3>
                         <div class="product__items--price">
                           <span class="current__price">Размер: {{ key.ProductSize }} </span><br>
                           <span class="current__price">Гендр: {{ key.ProductID.Product_gender }} </span><br>

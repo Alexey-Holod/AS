@@ -4,7 +4,6 @@
       <div id="featured" class="tab_pane active show">
         <div class="product__section--inner">
           <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
-
           {% for key, value in ProdAndPhoto.items %}
             <div class="col mb-30">
               <div class="product__items">
@@ -12,7 +11,7 @@
                   {% if user.is_staff %}
                   <a class="product__items--link" href="{% url 'edit_product' key.id %}">
                   {% else %}
-                  <a class="product__items--link" href="{% url 'product_details' key.id %}">
+                  <a class="product__items--link" href="{% url 'product_details' key.id False 'start_page' %}">
                   {% endif %}
 <!------------------------------------------------------------------------------------------------------------->
                     {% include 'home/includes/product_slider.html' %}
@@ -26,7 +25,7 @@
                   </div>
                 </div>
                   <div class="product__items--content">
-                    <h3 class="product__items--content__title h4"><a href="{% url 'edit_product' key.id %}">{{ key.Name_product }}</a></h3>
+                    <h3 class="product__items--content__title h4">{{ key.Name_product }}</h3>
                       <div class="product__items--price">
                         <span class="current__price">Гендр: {{ key.Product_gender }} </span>
                         <span class="current__price">Цена: {{ key.Product_price }} ₽</span>

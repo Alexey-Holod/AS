@@ -70,13 +70,16 @@ def find_price_form(request, product_type, gender, Product_age_category):
         return redirect('home')
 
 
-def product_details(request, produkt_id):
+def product_details(request, produkt_id, size = '', flag = False):
     ProdDetails = Product.objects.get(id=produkt_id)
     ProdPhoto = ProdDetails.images.all()
     ProdSize = ProdDetails.Product_size.all()
     ProductTypeList = ProductType.objects.all()
-    context = {'ProductTypeList': ProductTypeList,
+    context = {'flag':flag, 'ProductTypeList': ProductTypeList,
                'ProdDetails': ProdDetails,
                'ProdPhoto': ProdPhoto,
-               'ProdSize': ProdSize};
+               'ProdSize': ProdSize}
+    if flag:
+        context['size'] = size;
+
     return render(request, 'home/product-details.html', context)

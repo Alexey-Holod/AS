@@ -12,7 +12,7 @@ def user_home(request, user_id):
 
 # корзина покупателя
 # Name_product - Статус доставки
-def user_cart(request, user_id):
+def user_cart(request, flag):
     # Получаем товары с фотками для корзины покупателя
     HomePage = show_product()
     # Если пользователь авторизован, то стоит узнать,
@@ -23,19 +23,11 @@ def user_cart(request, user_id):
         check_user_cart1 = check_user_cart(request)
         #-------------------------------------------------
         CART = []
-        #print('--==--', HomePage)
+        print('--=================================--', )
         for i in check_user_cart1['User_cart']:
             CART.append({i:HomePage[i.ProductID]})
 
         #-------------------------------------------------
-        # exclud = []
-        # for i in HomePage:
-        #     if i in check_user_cart1['U_cart'].keys():
-        #         pass
-        #     else:
-        #         exclud.append(i)
-        # for i in exclud:
-        #     del HomePage[i]
         ProductTypeList = ProductType.objects.all()
         context = {'ProdAndPhoto': CART,
                    # Получаем типы продуктов для пунктов меню
