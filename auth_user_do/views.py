@@ -31,7 +31,6 @@ class Reg(View):
             UserPhone = Profile.objects.get(user = request.user.id)
             UserPhone.Phone = form.cleaned_data.get('phone')
             UserPhone.save()
-            print('ХУЙЙЙЙЙ', UserPhone.Phone)
 
             # -----------------------------------------
 

@@ -19,7 +19,7 @@ def add_to_cart(request, id_product, id_size):
     P_D.Name_product = DelStatus
     P_D.ClientAddres = 'addres'
     P_D.ClientPhone = '88005553535'
-    P_D.ClientMAil = 'Mail'
+    P_D.ClientMAil = User.objects.get(id = request.user.id)
     P_D.date = datetime.datetime.now().strftime("%Y%m%d")
     P_D.ProductSize = Size.objects.get(id = id_size)
 

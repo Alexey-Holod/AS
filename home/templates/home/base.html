@@ -175,9 +175,18 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
+
+                                {% if user.is_staff %}
+                                <li class="header__menu--items">
+
+                                    <a class="header__menu--link" href="{% url 'orders' %}">Заказы</a>
+
+                                </li>
+                                {% else %}
                                 <li class="header__menu--items">
                                     <a class="header__menu--link" href="#">Контакты </a>
                                 </li>
+                                {% endif %}
                             </ul>
                         </nav>
                     </div>
@@ -253,9 +262,16 @@
                                         {% endfor %}
                                     </ul>
                                 </li>
+
+                                {% if user.is_staff %}
                                 <li class="header__menu--items">
-                                    <a class="header__menu--link" href="#">Контакты </a>
+                                    <a class="header__menu--link" href="{% url 'orders' %}">Заказы</a>
                                 </li>
+                                {% else %}
+                                <li class="header__menu--items">
+                                    <a class="header__menu--link" href="#">Контакты</a>
+                                </li>
+                                {% endif %}
                             </ul>
                         </nav>
                     </div>

@@ -1,0 +1,24 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block home_page %}
+{% block style %}
+    <link type="text/css" href="{% static 'home/css/sliders.css' %}" rel="stylesheet"/>
+{% endblock %}
+<!-- my account section start -->
+<section class="my__account--section section--padding">
+  <div class="container">
+<h1>Страница в разработке</h1>
+
+                <!--slider-for-cart-->
+                  {% include 'users/includes/product_show.html' %}
+                <!--slider-for-cart-->
+
+  </div>
+</section>
+      <!-- my account section end -->
+{{ quantity_of_goods }}
+        <!-- Start shipping section -->
+
+        <!-- End shipping section -->
+
+{% endblock %}

@@ -2,6 +2,40 @@ from django.shortcuts import render, redirect
 from .forms import *
 from home.OtherFunction import *
 from home.models import *
+from delivery.models import ProductDelivery
+from home.OtherFunction import show_product
+from home.OtherFunction import check_user_cart
+
+
+def orders(request):
+    # Получаем товары с фотками для корзины покупателя
+    HomePage = show_product()
+    # Если пользователь авторизован, то стоит узнать,
+    # какие товары он имеет в корзине и отметить их
+    print('НЕТ')
+    if str(request.user) != 'AnonymousUser':
+        print('ДА')
+        # Обработка проверки товаров корзины вынесена в отдельный экспортируемый файл
+        # потому то к ней будем обращаться и в других функциях и даже модулях
+        check_user_cart1 = check_user_cart(request, 2)
+        # -------------------------------------------------
+        CART = []
+        print('--=================================--', )
+        for i in check_user_cart1['User_cart']:
+            CART.append({i: HomePage[i.ProductID]})
+
+        # -------------------------------------------------
+        ProductTypeList = ProductType.objects.all()
+        context = {'ProdAndPhoto': CART,
+                   # Получаем типы продуктов для пунктов меню
+                   'ProductTypeList': ProductTypeList,
+                   # Количество одинаковых товаров в корзине
+                   'User_cart': check_user_cart1['U_cart'],
+                   # Общее количество товаров в корзине
+                   'quantity_of_goods': check_user_cart1['quantity_of_goods'],
+                   # Флаг для отрисовки кнопки удаления товара из корзины
+                   'cart': True}
+    return render(request, 'modersite/orders.html', context = context)
 
 
 def moder(request):

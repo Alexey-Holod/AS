@@ -12,7 +12,7 @@ def user_home(request, user_id):
 
 # корзина покупателя
 # Name_product - Статус доставки
-def user_cart(request, flag):
+def user_cart(request, flag = ''):
     # Получаем товары с фотками для корзины покупателя
     HomePage = show_product()
     # Если пользователь авторизован, то стоит узнать,

@@ -37,8 +37,8 @@ def show_product(product_type=0, rang_price=[], gender='', age='None',):
     return ProdAndPhoto
 
 # Проверяем корзину, показываем какие товары в корзине и сколько их
-def check_user_cart(request, ):
-    User_cart = ProductDelivery.objects.filter(Customer=request.user.id).filter(Name_product=1)
+def check_user_cart(request, DelStat=1):
+    User_cart = ProductDelivery.objects.filter(Customer=request.user.id).filter(Name_product=DelStat)
     U_cart = {}
     for i in User_cart:
         if i.ProductID in U_cart:
