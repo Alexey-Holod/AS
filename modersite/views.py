@@ -7,7 +7,7 @@ from home.OtherFunction import show_product
 from home.OtherFunction import check_user_cart
 
 
-def orders(request):
+def orders(request, ):
     # Получаем товары с фотками для корзины покупателя
     HomePage = show_product()
     # Если пользователь авторизован, то стоит узнать,
@@ -20,7 +20,7 @@ def orders(request):
         check_user_cart1 = check_user_cart(request, 2)
         # -------------------------------------------------
         CART = []
-        print('--=================================--', )
+        print('--=================================--', check_user_cart1)
         for i in check_user_cart1['User_cart']:
             CART.append({i: HomePage[i.ProductID]})
 

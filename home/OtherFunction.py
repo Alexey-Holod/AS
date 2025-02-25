@@ -33,12 +33,15 @@ def show_product(product_type=0, rang_price=[], gender='', age='None',):
         Prod = Product.objects.filter(Product_type=product_type)
         Prod = check_gender(Prod, gender)
     ProdAndPhoto = take_photos(Prod)
-    print('++=++', type(ProdAndPhoto))
     return ProdAndPhoto
 
 # Проверяем корзину, показываем какие товары в корзине и сколько их
 def check_user_cart(request, DelStat=1):
-    User_cart = ProductDelivery.objects.filter(Customer=request.user.id).filter(Name_product=DelStat)
+    print('REQUEST', request.user.is_superuser)
+    if request.user.is_superuser:
+        User_cart = ProductDelivery.objects.filter(Name_product=DelStat)
+    else:
+        User_cart = ProductDelivery.objects.filter(Customer=request.user.id).filter(Name_product=DelStat)
     U_cart = {}
     for i in User_cart:
         if i.ProductID in U_cart:
