@@ -2,12 +2,26 @@ from django.shortcuts import render, redirect
 from .forms import *
 from home.OtherFunction import *
 from home.models import *
-from delivery.models import ProductDelivery
+from delivery.models import ProductDelivery, DeliveryStatus
 from home.OtherFunction import show_product
 from home.OtherFunction import check_user_cart
 
 
-def orders(request, ):
+def order_completed(request, order_id, status):
+    status = DeliveryStatus.objects.get(id = status)
+
+    ChangeOrderStatus = ProductDelivery.objects.get(id = order_id)
+    ChangeOrderStatus.Name_product = status
+    ChangeOrderStatus.save()
+    # Если статус "Заказан", то надо вернуться к исполненным заказам
+    if str(status) == 'Заказан':
+        print('---status---', status)
+        return orders(request, 5)
+    else:
+        return orders(request)
+
+
+def orders(request, status=2):
     # Получаем товары с фотками для корзины покупателя
     HomePage = show_product()
     # Если пользователь авторизован, то стоит узнать,
@@ -17,15 +31,13 @@ def orders(request, ):
         print('ДА')
         # Обработка проверки товаров корзины вынесена в отдельный экспортируемый файл
         # потому то к ней будем обращаться и в других функциях и даже модулях
-        check_user_cart1 = check_user_cart(request, 2)
-        # -------------------------------------------------
+        check_user_cart1 = check_user_cart(request, status)
         CART = []
         print('--=================================--', check_user_cart1)
         for i in check_user_cart1['User_cart']:
             CART.append({i: HomePage[i.ProductID]})
-
-        # -------------------------------------------------
         ProductTypeList = ProductType.objects.all()
+
         context = {'ProdAndPhoto': CART,
                    # Получаем типы продуктов для пунктов меню
                    'ProductTypeList': ProductTypeList,
@@ -35,6 +47,8 @@ def orders(request, ):
                    'quantity_of_goods': check_user_cart1['quantity_of_goods'],
                    # Флаг для отрисовки кнопки удаления товара из корзины
                    'cart': True}
+        if status == 5:
+            context['status'] = status
     return render(request, 'modersite/orders.html', context = context)
 
 

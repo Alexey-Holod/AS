@@ -15,5 +15,8 @@ urlpatterns = [
     path('edit_product/<int:prod_id>', edit_product, name='edit_product'),
     path('delete_product/<int:prod_id>', delete_product, name='delete_product'),
     path('delete_one_photo/<int:prod_id>/<int:id_photo>', delete_one_photo, name='delete_one_photo'),
-    path('orders/', orders, name='orders')
+    path('orders/', orders, name='orders'),
+    # Вкладка исполненные заказы.
+    path('orders/<int:status>/', orders, name='orders'),
+    path('order_completed/<int:order_id>/<int:status>', order_completed, name='order_completed')
 ]

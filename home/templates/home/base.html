@@ -178,9 +178,10 @@
 
                                 {% if user.is_staff %}
                                 <li class="header__menu--items">
-
-                                    <a class="header__menu--link" href="{% url 'orders' %}">Заказы</a>
-
+                                    <a class="header__menu--link" href="{% url 'orders' %}">Новые<br> заказы</a>
+                                </li>
+                                <li class="header__menu--items">
+                                    <a class="header__menu--link" href="{% url 'orders' 5 %}">Исполненные<br> заказы</a>
                                 </li>
                                 {% else %}
                                 <li class="header__menu--items">
@@ -265,7 +266,10 @@
 
                                 {% if user.is_staff %}
                                 <li class="header__menu--items">
-                                    <a class="header__menu--link" href="{% url 'orders' %}">Заказы</a>
+                                    <a class="header__menu--link" href="{% url 'orders' %}">Новые<br> заказы</a>
+                                </li>
+                                <li class="header__menu--items">
+                                    <a class="header__menu--link" href="{% url 'orders' 5 %}">Исполненные<br> заказы</a>
                                 </li>
                                 {% else %}
                                 <li class="header__menu--items">

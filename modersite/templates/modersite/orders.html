@@ -7,7 +7,14 @@
 <!-- my account section start -->
 <section class="my__account--section section--padding">
   <div class="container">
-<h1>Страница в разработке</h1>
+      {% if status == 5 %}
+      <h3>Исполненные заказы</h3>
+      {% else %}
+      <h3>Новые заказы</h3>
+      {% endif %}
+      <br>
+
+
 
                 <!--slider-for-cart-->
                   {% include 'users/includes/product_show.html' %}
