@@ -30,7 +30,7 @@ def order(request, id_product, id_size, ):
     # Получаем объект размера что-бы использовать его при поиске
     size = Size.objects.get(size_range=id_size)
     # Делаю поиск в таблице ProductDelivery с помощью двух параметров
-    ProdDeliVOrder = ProductDelivery.objects.filter(ProductID = id_product).filter(ProductSize = size)
+    ProdDeliVOrder = ProductDelivery.objects.filter(ProductID = id_product).filter(ProductSize = size).filter(Customer = request.user)
     # Т.к. при запросе выше мы получили обект "Набор", то используя его запросим один конкретный объект
     Here = ProductDelivery.objects.get(id = ProdDeliVOrder[0].id)
     # Далее запросим объект статуса заказа который нам нужен "ЗАКАЗАН"
