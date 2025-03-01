@@ -20,7 +20,10 @@ def user_cart(request, flag = ''):
     if str(request.user) != 'AnonymousUser':
         # Обработка проверки товаров корзины вынесена в отдельный экспортируемый файл
         # потому то к ней будем обращаться и в других функциях и даже модулях
-        check_user_cart1 = check_user_cart(request)
+        if flag == 'ordered':
+            check_user_cart1 = check_user_cart(request, 2)
+        else:
+            check_user_cart1 = check_user_cart(request)
         #-------------------------------------------------
         CART = []
         print('--=================================--', )

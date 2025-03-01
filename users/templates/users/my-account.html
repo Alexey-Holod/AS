@@ -5,15 +5,29 @@
     <link type="text/css" href="{% static 'home/css/sliders.css' %}" rel="stylesheet"/>
 {% endblock %}
 <!-- my account section start -->
-<section class="my__account--section section--padding">
-  <div class="container">
+        <section class="my__account--section section--padding">
+            <div class="container">
+                <div class="my__account--section__inner border-radius-10 d-flex">
+                    <div class="account__left--sidebar">
+                        <h2 class="account__content--title h3 mb-20">Моя корзина</h2>
+                        <ul class="account__menu">
+                            <li class="account__menu--list active"><a href="{% url 'user_cart' user.id %}">В корзине</a></li>
+                            <li class="account__menu--list "><a href="{% url 'user_cart' 'ordered' %}">Заказанные</a></li>
+                            <li class="account__menu--list"><a href="{% url 'user_cart' user.id %}">Купленные</a></li>
+                        </ul>
+                    </div>
+                    <div class="account__wrapper">
+                        <div class="account__content">
+                            <h2 class="account__content--title h3 mb-20">История заказов</h2>
+                            <div class="account__table--area">
 
                 <!--slider-for-cart-->
                   {% include 'users/includes/product_show.html' %}
                 <!--slider-for-cart-->
-
-  </div>
-</section>
+                            </div>
+                        </div>
+                    </div>
+        </section>
       <!-- my account section end -->
 
         <!-- Start shipping section -->
