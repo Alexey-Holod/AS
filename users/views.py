@@ -12,7 +12,7 @@ def user_home(request, user_id):
 
 # корзина покупателя
 # Name_product - Статус доставки
-def user_cart(request, flag = ''):
+def user_cart(request, flag = 'В_корзине'):
     # Получаем товары с фотками для корзины покупателя
     HomePage = show_product()
     # Если пользователь авторизован, то стоит узнать,
@@ -20,13 +20,13 @@ def user_cart(request, flag = ''):
     if str(request.user) != 'AnonymousUser':
         # Обработка проверки товаров корзины вынесена в отдельный экспортируемый файл
         # потому то к ней будем обращаться и в других функциях и даже модулях
-        if flag == 'ordered':
+        if flag == 'Заказанные':
             check_user_cart1 = check_user_cart(request, 2)
         else:
             check_user_cart1 = check_user_cart(request)
         #-------------------------------------------------
         CART = []
-        print('--=================================--', )
+
         for i in check_user_cart1['User_cart']:
             CART.append({i:HomePage[i.ProductID]})
 
@@ -40,7 +40,10 @@ def user_cart(request, flag = ''):
                    # Общее количество товаров в корзине
                    'quantity_of_goods':check_user_cart1['quantity_of_goods'],
                    # Флаг для отрисовки кнопки удаления товара из корзины
-                   'cart': True}
+                   'cart': True,
+
+                   'select':flag
+                   }
     return render(request, 'users/my-account.html', context=context)
 
 

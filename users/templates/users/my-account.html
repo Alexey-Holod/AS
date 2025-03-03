@@ -1,5 +1,9 @@
 {% extends 'home/base.html' %}
 {% load static %}
+
+{% load users_tags %}
+
+
 {% block home_page %}
 {% block style %}
     <link type="text/css" href="{% static 'home/css/sliders.css' %}" rel="stylesheet"/>
@@ -11,9 +15,7 @@
                     <div class="account__left--sidebar">
                         <h2 class="account__content--title h3 mb-20">Моя корзина</h2>
                         <ul class="account__menu">
-                            <li class="account__menu--list active"><a href="{% url 'user_cart' user.id %}">В корзине</a></li>
-                            <li class="account__menu--list "><a href="{% url 'user_cart' 'ordered' %}">Заказанные</a></li>
-                            <li class="account__menu--list"><a href="{% url 'user_cart' user.id %}">Купленные</a></li>
+                            {% get_categories select %}
                         </ul>
                     </div>
                     <div class="account__wrapper">
