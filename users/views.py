@@ -22,6 +22,8 @@ def user_cart(request, flag = 'В_корзине'):
         # потому то к ней будем обращаться и в других функциях и даже модулях
         if flag == 'Заказанные':
             check_user_cart1 = check_user_cart(request, 2)
+        elif flag == 'Куплено':
+            check_user_cart1 = check_user_cart(request, 5)
         else:
             check_user_cart1 = check_user_cart(request)
         #-------------------------------------------------

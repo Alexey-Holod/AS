@@ -26,15 +26,22 @@ def add_to_cart(request, id_product, id_size):
     P_D.save()
     return redirect('home')
 
-def order(request, id_product, id_size, ):
+def order(request, id_product, id_size, status = 0):
     # Получаем объект размера что-бы использовать его при поиске
     size = Size.objects.get(size_range=id_size)
     # Делаю поиск в таблице ProductDelivery с помощью двух параметров
     ProdDeliVOrder = ProductDelivery.objects.filter(ProductID = id_product).filter(ProductSize = size).filter(Customer = request.user)
     # Т.к. при запросе выше мы получили обект "Набор", то используя его запросим один конкретный объект
+    print('++++++++++++++++++++++++++++', ProdDeliVOrder)
+    print('ProductID', id_product)
+    print('ProductSize', size)
+    print('Customer', request.user)
     Here = ProductDelivery.objects.get(id = ProdDeliVOrder[0].id)
-    # Далее запросим объект статуса заказа который нам нужен "ЗАКАЗАН"
-    DevStatus = DeliveryStatus.objects.get(id = 2)
+    # Далее запросим объект статуса заказа
+    if status == 'Отмена':
+        DevStatus = DeliveryStatus.objects.get(Status='Отмена')
+    else:
+        DevStatus = DeliveryStatus.objects.get(id = 2)
     # Теперь присваиваем свойству объекта заказа новый статус
     Here.Name_product = DevStatus
     # Сохраняем
