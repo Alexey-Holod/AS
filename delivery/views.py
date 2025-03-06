@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 import datetime
 from home.models import Product, Size
 from home.views import product_details
+from users.views import user_cart
 from django.contrib.auth.models import User
 from .models import ProductDelivery, DeliveryStatus
 
@@ -39,11 +40,13 @@ def order(request, id_product, id_size, status = 0):
     Here = ProductDelivery.objects.get(id = ProdDeliVOrder[0].id)
     # Далее запросим объект статуса заказа
     if status == 'Отмена':
-        DevStatus = DeliveryStatus.objects.get(Status='Отмена')
+        DevStatus = DeliveryStatus.objects.get(Status=status)
     else:
         DevStatus = DeliveryStatus.objects.get(id = 2)
     # Теперь присваиваем свойству объекта заказа новый статус
     Here.Name_product = DevStatus
     # Сохраняем
     Here.save()
+    if status == 'Отмена':
+        return user_cart(request, status)
     return product_details(request, id_product, id_size, 'disable_size')

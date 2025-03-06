@@ -24,6 +24,8 @@ def user_cart(request, flag = 'В_корзине'):
             check_user_cart1 = check_user_cart(request, 2)
         elif flag == 'Куплено':
             check_user_cart1 = check_user_cart(request, 5)
+        elif flag == 'Отмена':
+            check_user_cart1 = check_user_cart(request, 3 )
         else:
             check_user_cart1 = check_user_cart(request)
         #-------------------------------------------------
