@@ -18,7 +18,7 @@
         <div class="form-group">
             <input class="datalot" type="password" name="password" minlength="6" id="password" placeholder="Пароль" required>
         </div>
-        <a href="#">Восстановить пароль</a>
+        <a href="{% url 'reset_password' %}">Восстановить пароль</a>
         <br>
         <div class="form-group">
             <button class="primary__btn" type="submit">Войти</button>
