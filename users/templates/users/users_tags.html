@@ -1,8 +1,26 @@
 {% for i in cats %}
+
   {% if i == select %}
-    <li class="account__menu--list active"><a href="{% url 'user_cart' i %}">{{ i }}</a></li>
+
+    {% if i == 'В_корзине' %}
+        <li class="account__menu--list active"><a href="{% url 'user_cart' i %}">{{ i }} {{ quantity_of_goods }}</a></li>
+    {% elif i == 'Заказанные' %}
+        <li class="account__menu--list active"><a href="{% url 'user_cart' i %}">{{ i }} {{ Sum_Ordered }}</a></li>
+    {% elif i == 'Куплено' %}
+        <li class="account__menu--list active"><a href="{% url 'user_cart' i %}">{{ i }} {{ Sum_Purchased }}</a></li>
+    {% elif i == 'Отмена' %}
+        <li class="account__menu--list active"><a href="{% url 'user_cart' i %}">{{ i }} {{ Sum_Cancelled }}</a></li>
+    {% endif %}
   {% else %}
-    <li class="account__menu--list"><a href="{% url 'user_cart' i %}">{{ i }}</a></li>
+    {% if i == 'В_корзине' %}
+        <li class="account__menu--list "><a href="{% url 'user_cart' i %}">{{ i }} {{ quantity_of_goods }}</a></li>
+    {% elif i == 'Заказанные' %}
+        <li class="account__menu--list "><a href="{% url 'user_cart' i %}">{{ i }} {{ Sum_Ordered }}</a></li>
+    {% elif i == 'Куплено' %}
+        <li class="account__menu--list "><a href="{% url 'user_cart' i %}">{{ i }} {{ Sum_Purchased }}</a></li>
+    {% elif i == 'Отмена' %}
+        <li class="account__menu--list "><a href="{% url 'user_cart' i %}">{{ i }} {{ Sum_Cancelled }}</a></li>
+    {% endif %}
   {% endif %}
 
 {% endfor %}

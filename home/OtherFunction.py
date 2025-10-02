@@ -37,11 +37,19 @@ def show_product(product_type=0, rang_price=[], gender='', age='None',):
 
 # Проверяем корзину, показываем какие товары в корзине и сколько их
 def check_user_cart(request, DelStat=1):
-    print('REQUEST', request.user.is_superuser)
     if request.user.is_superuser:
         User_cart = ProductDelivery.objects.filter(Name_product=DelStat)
     else:
-        User_cart = ProductDelivery.objects.filter(Customer=request.user.id).filter(Name_product=DelStat)
+        # Получаем все заказы пользователя
+        All_User_cart = ProductDelivery.objects.filter(Customer=request.user.id)
+        # Теперь получаем наборы разделенные по статусам
+        Ordered = All_User_cart.filter(Name_product=2)
+        Purchased = All_User_cart.filter(Name_product=5)
+        Cancelled = All_User_cart.filter(Name_product=3)
+        # Отсортируем те которые выбраны в соответствии со статусом заказа
+        User_cart = All_User_cart.filter(Name_product=DelStat)
+        # User_cart = ProductDelivery.objects.filter(Customer=request.user.id).filter(Name_product=DelStat)
+
     U_cart = {}
     for i in User_cart:
         if i.ProductID in U_cart:
@@ -49,4 +57,6 @@ def check_user_cart(request, DelStat=1):
         else:
             U_cart[i.ProductID] = 1
     # Передаю товары которые в корзине через User_cart
-    return {'User_cart': User_cart, 'U_cart': U_cart, 'quantity_of_goods': len(User_cart)}
+    return {'User_cart': User_cart, 'U_cart': U_cart,
+            'quantity_of_goods': len(User_cart), 'Sum_Ordered':len(Ordered),
+            'Sum_Purchased':len(Purchased), 'Sum_Cancelled':len(Cancelled)}

@@ -25,7 +25,7 @@ def user_cart(request, flag = 'В_корзине'):
         elif flag == 'Куплено':
             check_user_cart1 = check_user_cart(request, 5)
         elif flag == 'Отмена':
-            check_user_cart1 = check_user_cart(request, 3 )
+            check_user_cart1 = check_user_cart(request, 3)
         else:
             check_user_cart1 = check_user_cart(request)
         #-------------------------------------------------
@@ -45,7 +45,6 @@ def user_cart(request, flag = 'В_корзине'):
                    'quantity_of_goods':check_user_cart1['quantity_of_goods'],
                    # Флаг для отрисовки кнопки удаления товара из корзины
                    'cart': True,
-
                    'select':flag
                    }
     return render(request, 'users/my-account.html', context=context)
