@@ -3,15 +3,17 @@
 
 {% block style %}
     <link type="text/css" href="{% static 'home/css/sliders.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'home/css/carousel.css' %}" rel="stylesheet"/>
 {% endblock %}
 
 {% block home_page %}
-        <!-- Start slider section -->
+        <!-- Большой слайдер на главной -->
         {% include 'home/includes/big_slider.html' %}
-        <!-- End slider section -->
+        <!-- Карусель с брендами -->
+        {% include 'home/includes/carousel.html' %}
         <br>
         <!-- Слайдеры со шмотками -->
-        {% include 'home/includes/product_show.html' %}
+        {# {% include 'home/includes/product_show.html' %} #}
         <!-- Тут слайдер закончился -->
 
 {% endblock %}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AestheticStyle - Брендовая мода</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link type="text/css" href="index.css" rel="stylesheet"/>
+</head>
+<body>
+    <main class="c-main">
+        <div>
+            <span>СТИЛЬНАЯ</span>
+            <h1>Брендовая мода</h1>
+            <hr>
+            <p>Открой для себя лучшие бренды одежды. Здесь стиль встречается с качеством, а тренды становятся частью твоeгo образа. Выбери бренд, который подчеркивает твою индивидуальность.</p>
+            <a href="#">Я кнопка!</a>
+        </div>
+        <div class="c-swiper">
+            <div class="swiper-wrapper">
+                <div class="c-swiper-slide swiper-slide swiper-slide--one">
+                    <div>
+                        <h2>Jellyfish</h2>
+                        <p>Брэнд №1 и его описание которое представляет из себя просто шаблон текста и предназначен для образца визуального представления текста в карусели брендов.</p>
+                        <a href="https://en.wikipedia.org/wiki/Jellyfish" target="_blank">explore</a>
+                    </div>
+                </div>
+                <div class="c-swiper-slide swiper-slide swiper-slide--two">
+                    <div>
+                        <h2>Seahorse</h2>
+                        <p>Брэнд №2 и его описание которое представляет из себя просто шаблон текста и предназначен для образца визуального представления текста в карусели брендов.</p>
+                        <a href="https://en.wikipedia.org/wiki/Seahorse" target="_blank">explore</a>
+                    </div>
+                </div>
+                <div class="c-swiper-slide swiper-slide swiper-slide--three">
+                    <div>
+                        <h2>Octopus</h2>
+                        <p>Брэнд №3 и его описание которое представляет из себя просто шаблон текста и предназначен для образца визуального представления текста в карусели брендов.</p>
+                        <a href="https://en.wikipedia.org/wiki/Octopus" target="_blank">explore</a>
+                    </div>
+                </div>
+                <div class="c-swiper-slide swiper-slide swiper-slide--four">
+                    <div>
+                        <h2>Shark</h2>
+                        <p>Брэнд №4 и его описание которое представляет из себя просто шаблон текста и предназначен для образца визуального представления текста в карусели брендов.</p>
+                        <a href="https://en.wikipedia.org/wiki/Shark" target="_blank">explore</a>
+                    </div>
+                </div>
+                <div class="c-swiper-slide swiper-slide swiper-slide--five">
+                    <div>
+                        <h2>Dolphin</h2>
+                        <p>Брэнд №5 и его описание которое представляет из себя просто шаблон текста и предназначен для образца визуального представления текста в карусели брендов.</p>
+                        <a href="https://en.wikipedia.org/wiki/Dolphin" target="_blank">explore</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination c-swiper-pagination"></div>
+        </div>
+        <img src="https://cdn.pixabay.com/photo/2021/11/04/19/39/jellyfish-6769173_960_720.png" alt="" class="bg">
+        <img src="https://cdn.pixabay.com/photo/2012/04/13/13/57/scallop-32506_960_720.png" alt="" class="bg2">
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var swiper = new Swiper(".c-swiper", {
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                coverflowEffect: {
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 200,
+                    modifier: 2,
+                    slideShadows: true
+                },
+                keyboard: {
+                    enabled: true
+                },
+                mousewheel: {
+                    thresholdDelta: 70
+                },
+                loop: true,
+                pagination: {
+                    el: ".c-swiper-pagination",
+                    clickable: true
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2
+                    },
+                    768: {
+                        slidesPerView: 1
+                    },
+                    1024: {
+                        slidesPerView: 2
+                    },
+                    1560: {
+                        slidesPerView: 3
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
