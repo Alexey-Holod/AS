@@ -1,0 +1,63 @@
+.po {
+    width: 100%;
+}
+
+.datalot {
+    width: 150px;
+}
+
+.add_product-container {
+    width: 100%;
+    display: flex;
+    margin:0 5% 0 0%;
+}
+
+.container-forms {
+    width: 100%;
+    display: flex;
+    margin:0 5% 0 2%;/*положение на странице*/
+}
+
+.back-color {
+    background: #c3c3c3;
+}
+
+.add_product-col1 {
+    margin: 10px 0px 10px 0px; /*--верх/право/низ/лево--*/
+    padding: 1rem;
+    width: 50%;
+
+}
+
+.add_product-col2 {
+    margin: 10px 0px 10px 0px; /*--отступы--верх/право/низ/лево--*/
+    padding: 1rem;
+    width: 50%;
+}
+
+.add_product_params {
+    margin: 10px 20px 10px 0px; /*--верх/право/низ/лево--*/
+    padding: 1rem;
+    width: 40%;
+
+}
+
+.img-size {
+    width: 200px;
+}
+
+.elena {
+    margin: 10px;
+    background: #fff;
+}
+
+.container {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: 0em;
+    justify-content: center; /* Плитки по центру */
+    display: grid;
+    max-width: 100%;
+    /*width: 100%;*/
+    grid-template-columns: 25% 25% 25% 25%;
+}

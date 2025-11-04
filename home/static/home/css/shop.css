@@ -1,0 +1,42 @@
+.carousel-item-photo {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: none;
+    float: left;
+    margin-right: -100%;
+    backface-visibility: hidden;
+}
+
+.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}
+
+.carousel-inner {
+   height: 200x;
+}
+
+.carousel-control-next-icon,.carousel-control-prev-icon {
+    background-color: #ee2761;
+}
+
+.gallery-item { opacity: 0.5; }
+.gallery-item.active_slider { opacity: 1; }
+
+
+.select_shop {
+    --border-color2: #e4e4e4;
+    background-color: #FFFFFF;
+    color: black;
+    padding: 12px;
+    width: 250px;
+    border: none;
+    font-size: 20px;
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+}
+/*-----------*/
