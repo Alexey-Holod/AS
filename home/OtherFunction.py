@@ -8,11 +8,27 @@ def check_gender(Prod, gender):
         Prod = Prod.exclude(Product_gender=2)
     return Prod
 
+
 def take_photos(Prod):
-    ProdAndPhoto = {}
+    DictProdAndPhoto = {}
+
     for item_prod in Prod:
-        ProdAndPhoto[item_prod] = item_prod.images.all()[:4]
+        DictProdAndPhoto[item_prod] = item_prod.images.all()[:4]
+    ProdAndPhoto = list(DictProdAndPhoto.items())
+    print(type(ProdAndPhoto))
+    for i in ProdAndPhoto:
+        print(i)
+        for u in i:
+            print(u)
+
     return ProdAndPhoto
+
+
+# def take_photos(Prod):
+#     ProdAndPhoto = {}
+#     for item_prod in Prod:
+#         ProdAndPhoto[item_prod] = item_prod.images.all()[:4]
+#     return ProdAndPhoto
 
 def show_product(product_type=0, rang_price=[], gender='', age='None',):
     if product_type == 0 and len(rang_price) == 0:

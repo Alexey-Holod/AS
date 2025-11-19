@@ -6,10 +6,14 @@ from delivery.models import ProductDelivery
 
 
 def home(request):
+    # Получаем бренды для карусели
+    # Brends = Brand.objects.all()
+
     # Получаем товары с фотками для главной страници
     HomePage = show_product()
     ProductTypeList = ProductType.objects.all()
     context = {'ProdAndPhoto': HomePage,
+               # 'Brends': Brends,
                'ProductTypeList': ProductTypeList}
     # Если пользователь авторизован, то стоит узнать,
     # какие товары он имеет в корзине и отметить их

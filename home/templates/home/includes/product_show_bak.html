@@ -5,15 +5,13 @@
         <div class="product__section--inner">
           <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
           {% for key, value in ProdAndPhoto.items %}
-              {{ key }} <br><br>
-              {{ value }}
             <div class="col mb-30">
               <div class="product__items">
                 <div class="product__items--thumbnail">
                   {% if user.is_staff %}
-                    <a class="product__items--link" href="{% url 'edit_product' key.id %}">
+                  <a class="product__items--link" href="{% url 'edit_product' key.id %}">
                   {% else %}
-                    <a class="product__items--link" href="{% url 'product_details' key.id False 'start_page' %}">
+                  <a class="product__items--link" href="{% url 'product_details' key.id False 'start_page' %}">
                   {% endif %}
 <!------------------------------------------------------------------------------------------------------------->
                     {% include 'home/includes/product_slider.html' %}
