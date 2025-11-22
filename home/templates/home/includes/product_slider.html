@@ -1,7 +1,7 @@
 <!------------------------------------------------------------------------------------------------------------->
                     <!--Тут фотки из слайдера-->
                     <td class="tab-photo" >
-                      <div id="a{{ key }}" class="carousel slide">
+                      <div id="a{{ Product.id }}" class="carousel slide">
                         <div class="carousel-indicators">
                           <button type="button" data-bs-target="#a{{ Product.id }}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                           <button type="button" data-bs-target="#a{{ Product.id }}" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -21,11 +21,11 @@
                           {% endif %}
                           {% endfor %}
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#a{{ photo }}" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#a{{ Product }}" data-bs-slide="prev">
                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#a{{ photo }}" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#a{{ Product }}" data-bs-slide="next">
                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
                           <span class="visually-hidden">Next</span>
                         </button>

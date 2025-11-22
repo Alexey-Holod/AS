@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
 from .models import *
 from .forms import *
 from .OtherFunction import show_product, check_user_cart
@@ -10,9 +11,11 @@ def home(request):
     # Brends = Brand.objects.all()
 
     # Получаем товары с фотками для главной страници
-    HomePage = show_product()
+    Pagination = Paginator(show_product(), 2) # Пагинация
     ProductTypeList = ProductType.objects.all()
-    context = {'ProdAndPhoto': HomePage,
+    page_number = request.GET.get('page')
+    page_obj = Pagination.get_page(page_number)
+    context = {'ProdAndPhoto': page_obj,
                # 'Brends': Brends,
                'ProductTypeList': ProductTypeList}
     # Если пользователь авторизован, то стоит узнать,

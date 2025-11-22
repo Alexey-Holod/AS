@@ -77,6 +77,24 @@
             {% endfor %}
             <!-- Тут слайдер закончился -->
           </div>
+
+            <div class="pagination">
+              {% if ProdAndPhoto.has_previous %}
+                <a class="pagination-prev" href="?page={{ ProdAndPhoto.previous_page_number }}">Назад</a>
+              {% endif %}
+
+              {% for num in ProdAndPhoto.paginator.page_range %}
+                {% if num == ProdAndPhoto.number %}
+                <span class="active">{{ num }}</span>
+                {% else %}
+                <a class="pagination-next" href="?page={{ num }}">{{ num }}</a>
+                {% endif %}
+              {% endfor %}
+              {% if ProdAndPhoto.has_next %}
+                <a href="?page={{ ProdAndPhoto.next_page_number }}">Вперед</a>
+              {% endif %}
+            </div>
+
         </div>
       </div>
     </div>

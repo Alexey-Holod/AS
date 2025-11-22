@@ -1,0 +1,120 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.pagination a,
+.pagination span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 16px;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+/* Ссылки */
+.pagination a {
+    color: #717171;
+    background: #ffffff;
+    border: 2px solid #e1e5e9;
+}
+
+.pagination a:hover {
+    color: #005baa;
+    border-color: #005baa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 91, 170, 0.15);
+}
+
+/* Активная страница */
+.pagination span.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, #005baa, #003d73);
+    border-color: #005baa;
+    box-shadow: 0 4px 12px rgba(0, 91, 170, 0.3);
+}
+
+/* Кнопки "Назад"/"Вперед" */
+.pagination a:first-child,
+.pagination a:last-child {
+    font-weight: 600;
+    padding: 0 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+}
+
+.pagination a:first-child:hover,
+.pagination a:last-child:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Состояние disabled для кнопок */
+.pagination a.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.pagination a.disabled:hover {
+    border-color: #e1e5e9;
+    color: #717171;
+    box-shadow: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .pagination {
+        gap: 6px;
+    }
+
+    .pagination a,
+    .pagination span {
+        min-width: 40px;
+        height: 40px;
+        padding: 0 12px;
+        font-size: 13px;
+    }
+
+    .pagination a:first-child,
+    .pagination a:last-child {
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagination {
+        gap: 4px;
+    }
+
+    .pagination a,
+    .pagination span {
+        min-width: 36px;
+        height: 36px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+
+    /* Скрываем некоторые цифры на мобильных */
+    .pagination a:nth-child(n+4):nth-child(-n+7) {
+        display: none;
+    }
+
+    .pagination a:first-child,
+    .pagination a:last-child {
+        padding: 0 14px;
+    }
+}
