@@ -19,7 +19,7 @@ def user_cart(request, flag = 'В_корзине'):
     # какие товары он имеет в корзине и отметить их
     if str(request.user) != 'AnonymousUser':
         # Обработка проверки товаров корзины вынесена в отдельный экспортируемый файл
-        # потому то к ней будем обращаться и в других функциях и даже модулях
+        # потому то к ней будем обращаться и в других функциях
         if flag == 'Заказанные':
             check_user_cart1 = check_user_cart(request, 2)
         elif flag == 'Куплено':
@@ -32,7 +32,8 @@ def user_cart(request, flag = 'В_корзине'):
         CART = []
 
         for i in check_user_cart1['User_cart']:
-            CART.append({i:HomePage[i.ProductID]})
+            Product = HomePage.get(id = i.ProductID.id)
+            CART.append({i:Product})
 
         #-------------------------------------------------
         ProductTypeList = ProductType.objects.all()

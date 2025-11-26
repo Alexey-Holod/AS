@@ -40,7 +40,7 @@
                         <ul class="product__items--action d-flex">
                           <li class="product__items--action__list">
                             {% if user.is_staff %}
-                            <a class="product__items--action__btn add__to--cart" href="{% url 'delete_product' key.id %}">
+                            <a class="product__items--action__btn add__to--cart" href="{% url 'delete_product' Product.id %}">
                               <span class="add__to--cart__text"> Удалить этот товар </span>
                             </a>
                             {% else %}

@@ -11,16 +11,9 @@ def check_gender(Prod, gender):
 
 def take_photos(Prod):
     DictProdAndPhoto = {}
-
     for item_prod in Prod:
         DictProdAndPhoto[item_prod] = item_prod.images.all()[:4]
     ProdAndPhoto = list(DictProdAndPhoto.items())
-    print(type(ProdAndPhoto))
-    for i in ProdAndPhoto:
-        print(i)
-        for u in i:
-            print(u)
-
     return ProdAndPhoto
 
 
@@ -54,17 +47,26 @@ def show_product(product_type=0, rang_price=[], gender='', age='None',):
 
 # Проверяем корзину, показываем какие товары в корзине и сколько их
 def check_user_cart(request, DelStat=1):
-    if request.user.is_superuser:
-        User_cart = ProductDelivery.objects.filter(Name_product=DelStat)
-    else:
-        # Получаем все заказы пользователя
-        All_User_cart = ProductDelivery.objects.filter(Customer=request.user.id)
-        # Теперь получаем наборы разделенные по статусам
-        Ordered = All_User_cart.filter(Name_product=2)
-        Purchased = All_User_cart.filter(Name_product=5)
-        Cancelled = All_User_cart.filter(Name_product=3)
-        # Отсортируем те которые выбраны в соответствии со статусом заказа
-        User_cart = All_User_cart.filter(Name_product=DelStat)
+    # Получаем все заказы пользователя
+    All_User_cart = ProductDelivery.objects.filter(Customer=request.user.id)
+    # Теперь получаем наборы разделенные по статусам
+    Ordered = All_User_cart.filter(Name_product=2)
+    Purchased = All_User_cart.filter(Name_product=5)
+    Cancelled = All_User_cart.filter(Name_product=3)
+    # Отсортируем те которые выбраны в соответствии со статусом заказа
+    User_cart = All_User_cart.filter(Name_product=DelStat)
+
+    # if request.user.is_superuser:
+    #     User_cart = ProductDelivery.objects.filter(Name_product=DelStat)
+    # else:
+    #     # Получаем все заказы пользователя
+    #     All_User_cart = ProductDelivery.objects.filter(Customer=request.user.id)
+    #     # Теперь получаем наборы разделенные по статусам
+    #     Ordered = All_User_cart.filter(Name_product=2)
+    #     Purchased = All_User_cart.filter(Name_product=5)
+    #     Cancelled = All_User_cart.filter(Name_product=3)
+    #     # Отсортируем те которые выбраны в соответствии со статусом заказа
+    #     User_cart = All_User_cart.filter(Name_product=DelStat)
         # User_cart = ProductDelivery.objects.filter(Customer=request.user.id).filter(Name_product=DelStat)
 
     U_cart = {}

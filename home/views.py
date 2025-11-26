@@ -11,7 +11,7 @@ def home(request):
     # Brends = Brand.objects.all()
 
     # Получаем товары с фотками для главной страници
-    Pagination = Paginator(show_product(), 2) # Пагинация
+    Pagination = Paginator(show_product(), 10) # Пагинация
     ProductTypeList = ProductType.objects.all()
     page_number = request.GET.get('page')
     page_obj = Pagination.get_page(page_number)
