@@ -4,35 +4,34 @@
       <div id="featured" class="tab_pane active show">
         <div class="product__section--inner">
           <div class="row row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n30">
-          {% for i in ProdAndPhoto %}
-            {% for key, value in i.items %}
+          {% for Product in ProdAndPhoto %}
               <div class="col mb-30">
                 <div class="product__items">
                   {% if user.is_staff %}
-                    <h3 class="product__items--content__title h4">Заказчик {{ key.Customer.first_name }}</h3>
-                    <h3 class="product__items--content__title h4">Почта {{ key.Customer.email }}</h3>
-                    <h3 class="product__items--content__title h4">Телефон {{ key.Customer.profile.Phone }}</h3>
+                    <h3 class="product__items--content__title h4">Заказчик {{ Product.Customer.first_name }}</h3>
+                    <h3 class="product__items--content__title h4">Почта {{ Product.Customer.email }}</h3>
+                    <h3 class="product__items--content__title h4">Телефон {{ Product.Customer.profile.Phone }}</h3>
                   {% endif%}
                   <div class="product__items--thumbnail">
-                    <a class="product__items--link" href="{% url 'product_details' key.ProductID key.ProductSize 'disable_size' %}">
+                    <a class="product__items--link" href="{% url 'product_details' Product.id Product.Product_size 'disable_size' %}">
   <!------------------------------------------------------------------------------------------------------------->
                       {% include 'home/includes/product_slider.html' %}
   <!------------------------------------------------------------------------------------------------------------->
                     </a>
                     <!--Описание товара-->
                     <div class="product__badge">
-                      {% if key.ProductID.Product_sale %}
+                      {% if Product.ProductID.Product_sale %}
                       <span class="product__badge--items sale">Распродажа</span>
                       {% endif %}
                     </div>
                   </div>
                     <div class="product__items--content">
-                      <h3 class="product__items--content__title h4">{{ key.ProductID.Name_product }}</h3>
+                      <h3 class="product__items--content__title h4">{{ Product.ProductID.Name_product }}</h3>
                         <div class="product__items--price">
-                          <span class="current__price">Размер: {{ key.ProductSize }} </span><br>
-                          <span class="current__price">Гендр: {{ key.ProductID.Product_gender }} </span><br>
-                          <span class="current__price">Цена: {{ key.ProductID.Product_price }} ₽</span><br>
-                          <span class="current__price">арт: {{ key.ProductID.Product_code }}</span>
+                          <span class="current__price">Размер: {{ Product.ProductSize }} </span><br>
+                          <span class="current__price">Гендр: {{ Product.Product_gender }} </span><br>
+                          <span class="current__price">Цена: {{ Product.Product_price }} ₽</span><br>
+                          <span class="current__price">арт: {{ Product.Product_code }}</span>
                         </div>
                           <ul class="rating product__rating d-flex">
                           </ul>
@@ -96,8 +95,7 @@
                     </div>
                 </div>
               </div>
-              {% endfor %}
-            {% endfor %}
+          {% endfor %}
 
             <!-- Тут слайдер закончился -->
           </div>

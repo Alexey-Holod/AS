@@ -3,7 +3,6 @@
 
 {% load users_tags %}
 
-
 {% block home_page %}
 {% block style %}
     <link type="text/css" href="{% static 'home/css/sliders.css' %}" rel="stylesheet"/>
@@ -18,31 +17,30 @@
             {% get_categories request select %}
           </ul>
         </div>
-          <div class="account__wrapper">
-            <div class="account__content">
-              {% if select == 'В_корзине' %}
-                <h2 class="account__content--title h3 mb-20">Корзина</h2>
-              {% endif %}
-              {% if select == 'Заказанные' %}
-                <h2 class="account__content--title h3 mb-20">Заказы в обработке</h2>
-              {% endif %}
-              {% if select == 'Куплено' %}
-                <h2 class="account__content--title h3 mb-20">Куплены ранее</h2>
-              {% endif %}
-              {% if select == 'Отмена' %}
-                <h2 class="account__content--title h3 mb-20">Отмененные заказы</h2>
-              {% endif %}
-
-              {% if not ProdAndPhoto %}
-                <h4 class="account__content--title h4 mb-20">Пусто</h4>
-              {% endif %}
-              <div class="account__table--area">
-                <!--slider-for-cart-->
-                {% include 'users/includes/product_show.html' %}
-                <!--slider-for-cart-->
-              </div>
+        <div class="account__wrapper">
+          <div class="account__content">
+            {% if select == 'В_корзине' %}
+              <h2 class="account__content--title h3 mb-20">Корзина</h2>
+            {% endif %}
+            {% if select == 'Заказанные' %}
+              <h2 class="account__content--title h3 mb-20">Заказы в обработке</h2>
+            {% endif %}
+            {% if select == 'Куплено' %}
+              <h2 class="account__content--title h3 mb-20">Куплены ранее</h2>
+            {% endif %}
+            {% if select == 'Отмена' %}
+              <h2 class="account__content--title h3 mb-20">Отмененные заказы</h2>
+            {% endif %}
+             {% if not ProdAndPhoto %}
+               <h4 class="account__content--title h4 mb-20">Пусто</h4>
+            {% endif %}
+            <div class="account__table--area">
+              <!--slider-for-cart-->
+              {% include 'users/includes/product_show.html' %}
+              <!--slider-for-cart-->
             </div>
           </div>
+        </div>
       </div>
     </div>
   </section>
