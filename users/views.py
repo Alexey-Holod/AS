@@ -11,31 +11,8 @@ def user_home(request, user_id):
     context = {'orders': User_Deliv}
     return render(request, 'users/my-account.html', context = context)
 
-def user_cart(request, flag = 'В_корзине'):
-    # Получаем бренды для карусели
-    # Brends = Brand.objects.all()
 
-    # Получаем товары с фотками для главной страници
-    Pagination = Paginator(show_product(), 10) # Пагинация
-    ProductTypeList = ProductType.objects.all()
-    page_number = request.GET.get('page')
-    page_obj = Pagination.get_page(page_number)
-    context = {'ProdAndPhoto': page_obj,
-               # 'Brends': Brends,
-               'ProductTypeList': ProductTypeList}
-    # Если пользователь авторизован, то стоит узнать,
-    # какие товары он имеет в корзине и отметить их
-    if (str(request.user) != 'AnonymousUser'):
-        # Обработка проверки товаров корзины вынесена в отдельный экспортируемый файл
-        # потому то к ней будем обращаться и в других функциях и даже модулях
-        check_user_cart1 = check_user_cart(request)
-        # Чтобы показать какие товары уже в корзине и сколько их
-        context['User_cart'] = check_user_cart1['U_cart']
-        # Показать общее количество товаров в корзине на значке корзины
-        context['quantity_of_goods'] = check_user_cart1['quantity_of_goods']
-    return render(request, 'users/my-account.html', context=context)
 
-'''
 # корзина покупателя
 # Name_product - Статус доставки
 def user_cart(request, flag = 'В_корзине'):
@@ -75,7 +52,7 @@ def user_cart(request, flag = 'В_корзине'):
                    'select':flag
                    }
     return render(request, 'users/my-account.html', context=context)
-'''
+
 
 def buy(request, order_id, flag):
     User_will_buy = ProductDelivery.objects.get(id = order_id)
